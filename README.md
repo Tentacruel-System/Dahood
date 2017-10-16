@@ -7,5 +7,5 @@ Desarroladores
 Apipilhuasco Rosas Orlando Alain
 Salas Martinez Mauricio Javier
 Leonardo
-David
+Saulés Rojas David
 Manuel
