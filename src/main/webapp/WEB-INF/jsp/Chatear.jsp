@@ -13,23 +13,32 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="<c:url value="/css/Inicio.css"/> ">
+         <link rel="stylesheet" type="text/css" href="<c:url value="/css/Inicio.css"/> ">
         <title>JSP Page</title>
     </head>
     <body>
-        <div class="container">
-            <header>Hola mundo</header>
+        <div class="container principal">
+            <header>
+                <nav class="navbar navbar-dark bg-primary barraDahood">
+                    Dahood
+                </nav>
+            </header>
             <div class ="container">
                 <div class = "row">
                     <div class ="col-2">
-                        Perfil  <br>
-                        Buscar  <br>
-                        Chat    <br>
-                        Salir   <br>
+                        <button type="button" class="btn btn-outline-primary">Perfil</button> <br>
+                        <button type="button" class="btn btn-outline-primary">Buscar</button> <br>
+                        <button type="button" class="btn btn-outline-primary">Chat</button> <br>
+                        <button type="button" class="btn btn-outline-primary">Salir</button> <br>
                     </div>
                     <div class ="col-8">
                         <div class="container">
-                        <header>Chat</header>
+                        
+                            <header class="headerchat">
+                                <nav class="navbar navbar-dark bg-primary">
+                                    Chat
+                                </nav>
+                            </header>
 
                             <div class = "row">
 
@@ -42,7 +51,6 @@
 
                                 <div class =" col-8">
                                     <div class="container">
-                                        
                                     </div>
                                 </div>
 
