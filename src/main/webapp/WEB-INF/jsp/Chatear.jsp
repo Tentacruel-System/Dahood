@@ -25,29 +25,26 @@
             </header>
             <div class ="container">
                 <div class = "row">
-                    <div class ="col-2">
-                        <button type="button" class="btn btn-outline-primary">Perfil</button> <br>
-                        <button type="button" class="btn btn-outline-primary">Buscar</button> <br>
-                        <button type="button" class="btn btn-outline-primary">Chat</button> <br>
-                        <button type="button" class="btn btn-outline-primary">Salir</button> <br>
+                    <div class ="col-2 barraElementos">
+                        <button type="button" class="btn btn-outline-primary espaciado">Perfil</button> <br>
+                        <button type="button" class="btn btn-outline-primary espaciado">Buscar</button> <br>
+                        <button type="button" class="btn btn-outline-primary espaciado">Chat</button> <br>
+                        <button type="button" class="btn btn-outline-primary espaciado">Salir</button> <br>
                     </div>
-                    <div class ="col-8">
-                        <div class="container">
+                    <div class ="col-8 ">
+                        <div class="container bordeChat">
                         
-                            <header class="headerchat">
-                                <nav class="navbar navbar-dark bg-primary">
+                            <header class="headerchat bordebot">
+                                
                                     Chat
-                                </nav>
+                                
                             </header>
 
                             <div class = "row">
 
-                                <div class="col-2"> 
-                                <header>Amigos</header>
-                                Amigo1 <br>
-                                Amigo2 <br>
-                                Amigo3 <br>
-                                </div>
+                                <div class="col-2 bordeRigth">Amigos</div>
+                                   
+                                
 
                                 <div class =" col-8">
                                     <div class="container">
