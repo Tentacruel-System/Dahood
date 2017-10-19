@@ -1,64 +1,54 @@
 <%-- 
-    Document   : crear_perfil
-    Created on : Oct 16, 2017, 3:57:18 PM
-    Author     : Leonardo Gallo
+    Document   : nuevoInicio
+    Created on : Oct 2, 2017, 3:40:59 PM
+    Author     : lgallo
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Crear Perfil</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="<c:url value="/css/Inicio.css"/> ">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="<c:url value="/css/cear_perfilcss.css"/> ">
+        <title>nuevoInicio</title>
     </head>
     <body>
         
-    <container>
-        <form>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputEmail4" class="col-form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputPassword4" class="col-form-label">Password</label>
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-              </div>
+        <div id="envoltura">
+        <div id="contenedor">
+ 
+            <div id="cabecera">
+                <h2>Crear Perfil</h2>
             </div>
-            <div class="form-group">
-              <label for="inputAddress" class="col-form-label">Address</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+ 
+            <div id="cuerpo">
+ 
+                <form id="form-login" action="/crear_perfil" method="post" >
+                    <p><label for="nombre">Nombre:</label></p>
+                        <input name="Nombre" type="text" id="nombre" class="nombre" placeholder="...escribe tu nombre" autofocus=""/ ></p>
+                    <p><label for="apellido_p">Apellido paterno:</label></p>
+                        <input name="Apellido_p" type="text" id="apellido_p" class="nombre" placeholder="...escribe tu mail" /></p>
+                    <p><label for="apellido_m">Apellido materno:</label></p>
+                        <input name="Apellido_m" type="text" id="apellido_m" class="nombre" placeholder="...escribe tu mail" /></p>
+                
+                    <p><label for="contrasena">Contraseña:</label></p>
+                        <input name="pass" type="password" id="pass" class="pass" placeholder="...escribe tu contraseña"/ ></p>
+ 
+                    <p><label for="confcontrasena">Confirmar Contraseña:</label></p>
+                        <input name="confcontrasena" type="password" id="repass" class="repass" placeholder="Repite contraseña" /></p>
+ 
+                    <p id="bot"><input name="submit" type="submit" id="boton" value="Cancelar" class="boton"/></p>
+                    <p id="bot"><input name="submit" type="submit" id="boton" value="Aceptar" class="boton"/></p>
+                </form>
             </div>
-            <div class="form-group">
-              <label for="inputAddress2" class="col-form-label">Address 2</label>
-              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputCity" class="col-form-label">City</label>
-                <input type="text" class="form-control" id="inputCity">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputState" class="col-form-label">State</label>
-                <select id="inputState" class="form-control">Choose</select>
-              </div>
-              <div class="form-group col-md-2">
-                <label for="inputZip" class="col-form-label">Zip</label>
-                <input type="text" class="form-control" id="inputZip">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox"> Check me out
-                </label>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </form>
-    </container>
+ 
+            <div id="pie">DAHOOD</div>
+        </div><!-- fin contenedor -->
+ 
+    </div>
         
     </body>
 </html>
