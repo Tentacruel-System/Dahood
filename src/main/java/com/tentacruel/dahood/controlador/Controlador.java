@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+
 /**
  *
  * @author maw
@@ -18,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class Controlador {
     
-   @RequestMapping(value="/", method = RequestMethod.GET)
+   @RequestMapping(value="/inicio", method = RequestMethod.GET)
     public String dahood(ModelMap model){
           
         

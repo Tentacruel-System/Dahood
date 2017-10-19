@@ -30,8 +30,7 @@ public class Chat {
     private int id_usuario2;
     @Column(name = "fecha")
     private String  fecha;
-    @Column(name = "ruta")
-    private String ruta;
+   
 
     public int getId_chat() {
         return id_chat;
@@ -65,13 +64,8 @@ public class Chat {
         this.fecha = fecha;
     }
 
-    public String getRuta() {
-        return ruta;
-    }
+    
 
-    public void setRuta(String ruta) {
-        this.ruta = ruta;
-    }
     
     
 }

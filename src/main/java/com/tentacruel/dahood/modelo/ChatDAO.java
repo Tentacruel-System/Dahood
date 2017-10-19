@@ -21,7 +21,7 @@ public class ChatDAO {
     private SessionFactory sessionFactory;
     
     /**
-     * Inicialisamos la sesion a la base de datos.
+     * Inicializamos la sesion a la base de datos.
      * @param sessionFactory 
      */
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -29,7 +29,7 @@ public class ChatDAO {
     }
     
     
-    public List<Amigos> GetAmigos(int usuario){
+    public List<Amigos> getAmigos(int usuario){
        
         List<Amigos> result  = null;
         Session session = sessionFactory.openSession();
