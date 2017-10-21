@@ -108,7 +108,7 @@ public class UsuarioDAO {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            String hql = "FROM Usuario WHERE id_usuario = :idu";
+            String hql = "FROM Usuario WHERE id_usuario = :idu"; //NOmbre de la clase y atributo de la clase
             Query query = session.createQuery(hql);
             query.setParameter("idu", id);
             

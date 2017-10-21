@@ -20,17 +20,20 @@ import javax.persistence.OneToMany;
  * @author lgallo
  */
 @Entity
-@Table(name = "usuario")
+@Table(name = "Usuario")
 public class Usuario {
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
     private int id_usuario;
     
+    @Column(name = "nickname")
+    private String nickname;
+            
     @Column(name = "nombre")
     private String nombre;
     
-    //@Column(name = "correo")
-    //private String correo;
+    @Column(name = "correo")
+    private String correo;
     
     @Column(name = "contrasena")
     private String contrasena;
