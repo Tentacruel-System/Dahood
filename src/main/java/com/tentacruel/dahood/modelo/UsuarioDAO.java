@@ -13,7 +13,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
- * Nos permite modificar datos en la tabla de Usuario
+ * Nos permite modificar datos en la tabla de usuario
  * @author lgallo
  */
 public class UsuarioDAO {
@@ -42,7 +42,7 @@ public class UsuarioDAO {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            //guardamos el marcador
+            //guardamos el usuario
             session.persist(user); //para guardar persist
 
             tx.commit(); //para realizar la transaccion
@@ -60,12 +60,13 @@ public class UsuarioDAO {
     }
 
     /**
-     * Regresa la lista de todos los marcadores en la base de datos
+     * Regresa el usuario de la base de datos en forma de objeto
      *
-     * @return salida que es el usuario con el correo dado
+     * @param nickname del usuario que se busca
+     * @return salida que es el usuario con el nickname dado
      */
-    public Usuario getUsuario(String nombre) {
-        //Creamos una variable donde vamos a guardar el ususario solicitado
+    public Usuario getUsuario(String nickname) {
+        //Creamos una variable donde vamos a guardar el usuario solicitado
         Usuario salida = null;
         //Se inicia la sesión
         Session session = sessionFactory.openSession();
@@ -73,10 +74,10 @@ public class UsuarioDAO {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            /* Después del from nos referimos a la clase y correo es el atributo de la clase */
-            String hql = "FROM Usuario WHERE nombre =: c"; //inyectamos corre en c
+            /* Después del from nos referimos a la clase y nickname es el atributo de la clase */
+            String hql = "FROM Usuario WHERE nickname =: c"; //inyectamos nickname en c
             Query query = session.createQuery(hql);
-            query.setParameter("c", nombre);
+            query.setParameter("c", nickname);
             salida = (Usuario)query.uniqueResult();
             tx.commit();
         } catch (Exception e) {
@@ -93,56 +94,18 @@ public class UsuarioDAO {
     }
     
     /**
-     * Regresa el marcador con el id dado
-     *
-     * @param id del usuario
-     * @return el usuario con ese id
-     */
-    public Usuario getUsuarioId(int id) {
-        //aqui va tu codigo
-        //creamos una variable en donde guardar el marcador
-        Usuario user = null;
-        //se inicia la sesion
-        Session session = sessionFactory.openSession();
-        //la transaccion a relizar
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            String hql = "FROM Usuario WHERE id_usuario = :idu"; //NOmbre de la clase y atributo de la clase
-            Query query = session.createQuery(hql);
-            query.setParameter("idu", id);
-            
-            //Hacemos un cast de lo que obtenemos en el query a un obj Marcador
-            user = (Usuario) query.uniqueResult();
-            
-            tx.commit();
-        } catch (Exception e) {
-            //Se regresa a un estado consistente 
-            if (tx != null) {
-                tx.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            //cerramos simpre la sesion
-            session.close();
-        }
-        return user;
-    }
-
-    /**
      * Elimina el usuario de la base de datos
      *
      * @param user el usuario a eliminar
      */
     public void eliminar(Usuario user) {
-        //aqui va tu codigo
         //se inicia la sesion
         Session session = sessionFactory.openSession();
         //la transaccion a relizar
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            //guardamos el marcador
+            //guardamos el usuario
             session.delete(user);
             tx.commit();
         } catch (Exception e) {
@@ -163,14 +126,13 @@ public class UsuarioDAO {
      * @param user con los nuevos valores
      */
     public void actualizar(Usuario user) {
-        //aqui va tu codigo
         //se inicia la sesion
         Session session = sessionFactory.openSession();
         //la transaccion a relizar
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            //guardamos el marcador
+            //guardamos el usuario
             session.update(user);
 
             tx.commit();
