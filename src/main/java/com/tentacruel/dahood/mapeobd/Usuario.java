@@ -13,8 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Hacemos el mapeo de un elemento de la tabla Usuario a un objeto Usuario
- * @author lgallo
+ * Hacemos el mapeo de un elemento de la tabla usuario a un objeto Usuario
+ * @author Leonardo Gallo
  */
 @Entity
 @Table(name = "usuario")
