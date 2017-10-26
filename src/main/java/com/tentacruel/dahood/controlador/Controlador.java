@@ -23,7 +23,7 @@ public class Controlador {
     public String dahood(ModelMap model){
           
         
-        return"inicio";
+        return"plantilla";
     
     }
     
