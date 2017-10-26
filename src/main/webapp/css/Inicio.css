@@ -30,12 +30,12 @@ and open the template in the editor.
 }
 
 #grad2 {
-  
+    
     background: linear-gradient(#bfe9ff,#ff6e7f); /* Standard syntax (must be last) */
 }
 
 
-.navbar, .navbar-light, .bg-faded{
+.navbar, .navbar-light, .bg-faded, .nav{
     background-color: #686E71;
     
 }
@@ -43,3 +43,42 @@ and open the template in the editor.
 .footer{
     background-color: #686E71
 }
+
+.principal{
+    padding-top: 1px; 
+    padding-bottom: 4px;
+    background-color: #EEF3F6;
+}
+
+.barraDahood{
+    
+    margin: .5em;
+    
+}
+.barraElementos{
+    margin: .5em;
+    
+}
+
+.espaciado{
+    margin: .5em;
+}
+
+.bordeChat{
+    width: 500px;
+    height: 200px;
+    border-style: solid;
+    border-color:gray;
+}
+
+.bordebot{
+    border-bottom: 2px solid rgba(0,0,0,.10);
+}
+
+.bordeRigth{
+    height: 150px;
+    border-right: 2px solid rgba(0,0,0,.10);
+    margin: .5em;
+    justify-content: space-between;
+}
+
