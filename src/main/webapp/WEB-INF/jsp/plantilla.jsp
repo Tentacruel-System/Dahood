@@ -3,11 +3,11 @@
     Created on : 16/10/2017, 06:18:32 PM
     Author     : orlando
 --%>
-    
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,43 +34,18 @@
                     </li>
                 </ul>
             </header>
-                
-                
+            
+            
             <div class ="container-fluid">
                 <div class = "row">
+                    
+                    <div class ="col-10 style" style = "padding-top: 1px">
+                        
+                    </div>
                     <div class ="col-2 barraElementos">
-                        <button type="button" class="btn btn-outline-primary espaciado">Perfil</button> <br>
-                        <button type="button" class="btn btn-outline-primary espaciado">Buscar</button> <br>
-                        <button type="button" class="btn btn-outline-primary espaciado">Chat</button> <br>
-                        <button type="button" class="btn btn-outline-primary espaciado">Salir</button> <br>
+                        Lista de amigos
                     </div>
-                    <div class ="col-8 ">
-                        <div class="container-fluid bordeChat">
-                            
-                            <header class="headerchat bordebot">
-                                
-                                Chat
-                                    
-                            </header>
-                                
-                            <div class = "row">
-                                
-                                <div class="col-2 bordeRigth">Amigos</div>
-                                    
-                                    
-                                    
-                                <div class =" col-8">
-                                    <div class="container-fluid">
-                                    </div>
-                                </div>
-                                    
-                            </div>
-                        </div>
-                    </div>
-                        
-                    <div class ="col-8">
-                        
-                    </div>
+                    
                 </div>
             </div>    
         </div>
