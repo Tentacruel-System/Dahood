@@ -5,25 +5,21 @@
  */
 package com.tentacruel.dahood.controlador;
 
-import java.security.Principal;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import com.tentacruel.dahood.mapeobd.Usuario;
 import com.tentacruel.dahood.modelo.UsuarioDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
- * @author lgallo
+ * @author Leonardo Gallo
  */
 @Controller //Notación para spring
 public class ControladorCrearPerfil {
-    /*Injectamos el modelo del usuario */
+    /*Inyectamos el modelo del usuario */
     @Autowired
     UsuarioDAO usuario_db;
     
@@ -35,19 +31,23 @@ public class ControladorCrearPerfil {
     @RequestMapping(value="/crear_perfil", method = RequestMethod.POST)
     public String crearPerfil(HttpServletRequest request){
         String nombre = request.getParameter("nombre");//en el jsp debe llamarse igual
-//        String 
-//        Double longitud = Double.parseDouble(request.getParameter("longitud"));//*
-//        String nombre = request.getParameter("nombre");//*
-//        String descripcion = request.getParameter("descripcion");//*
-//        Marcador ma = marcador_db.getMarcador(latitud, longitud);
-//        if(ma == null){
-//            Marcador m  = new Marcador();
-//            m.setLatitud(latitud);
-//            m.setLongitud(longitud);
-//            m.setNombre(nombre);
-//            m.setDescripcion(descripcion);
-//            marcador_db.guardar(m);    
-//        }
+        String apellido_p = request.getParameter("apellido_p");
+        String apellido_m = request.getParameter("apellido_m");
+        String nickname = request.getParameter("nickname");
+        String correo = request.getParameter("corre");
+        String contrasena = request.getParameter("contrasena");
+        String confcontrasena = request.getParameter("confcontrasena");
+        /* Verificamos que no exista otro usuario con el mismo correo o nickname */
+        Usuario user = usuario_db.getUsuario(nickname);
+        if(user == null && contrasena == confcontrasena){
+            Usuario newuser = new Usuario();
+            newuser.setNombre(nombre);
+            newuser.setApellidoPaterno(apellido_p);
+            newuser.setApellidoMaterno(apellido_m);
+            newuser.setNickname(nickname);
+            newuser.setCorreo(correo);
+            newuser.setContrasena(contrasena);
+        }
         return "redirect:/";
     }
 }
