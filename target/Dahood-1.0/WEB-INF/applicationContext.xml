@@ -23,14 +23,15 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="annotatedClasses">
             <list>
-               
+               <!-- Agregamos el mapeo -->
+                <value>com.tentacruel.dahood.mapeobd.Usuario</value>
             </list>
         </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.format_sql">false</prop>
+                <prop key="hibernate.format_sql">true</prop>
             </props>
         </property>
     </bean>
@@ -38,6 +39,7 @@
     <!--  Se agrega para poder inyectarlo a los Controladores, revisa EjemploController.java
           en el paquete controlador, se esta haciendo uso de @Autowired-->
     <!--Ejemplo para configurar bean-->
-    
+    <bean id="UsuarioDAO" class="com.tentacruel.dahood.modelo.UsuarioDAO" p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"/>
+
 
 </beans>

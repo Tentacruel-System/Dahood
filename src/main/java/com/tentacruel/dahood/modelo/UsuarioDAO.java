@@ -75,7 +75,7 @@ public class UsuarioDAO {
         try {
             tx = session.beginTransaction();
             /* Después del from nos referimos a la clase y nickname es el atributo de la clase */
-            String hql = "FROM Usuario WHERE nickname =: c"; //inyectamos nickname en c
+            String hql = "FROM Usuario WHERE nickname = :c"; //inyectamos nickname en c
             Query query = session.createQuery(hql);
             query.setParameter("c", nickname);
             salida = (Usuario)query.uniqueResult();

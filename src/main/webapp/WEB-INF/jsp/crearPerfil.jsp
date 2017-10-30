@@ -26,7 +26,7 @@
  
             <div id="cuerpo">
  
-                <form id="form-login" action="/crear_perfil" method="post" >
+                <form id="form-login" action="/Dahood/crearPerfil" method="post" >
                     
                     <p><label for="nombre">Nombre:</label></p>
                     <p><input name="nombre" type="text" class="" placeholder="...escribe tu nombre" autofocus=""/ ></p>
@@ -48,9 +48,8 @@
  
                     <p><label for="confcontrasena">Confirmar Contraseña:</label></p>
                     <p><input name="confcontrasena" type="password" id="repass" class="repass" placeholder="Repite contraseña" /></p>
- 
-                    <p id="bot"><input name="submit" type="submit" id="boton" value="Cancelar" class="boton"/></p>
-                    <p id="bot"><input name="submit" type="submit" id="boton" value="Aceptar" class="boton"/></p>
+
+                    <p id="bot"><button name="submit" type="submit" id="boton" value="Aceptar" class="boton">Aceptar</button></p>
                 </form>
             </div>
  
