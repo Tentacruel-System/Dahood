@@ -30,9 +30,17 @@ public class Chat {
     private int id_usuario2;
     @Column(name = "fecha")
     private String  fecha;
+    
+    private String texto;
    
 
-    //
+    public Chat( int usuario1, String texto){
+        
+        this.texto = texto;
+        this.id_usuario1 = usuario1;
+        
+        
+    }
     
     public int getId_chat() {
         return id_chat;

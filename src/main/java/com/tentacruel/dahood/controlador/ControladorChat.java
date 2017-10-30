@@ -8,6 +8,7 @@ package com.tentacruel.dahood.controlador;
 import com.tentacruel.dahood.mapeobd.Chat;
 import com.tentacruel.dahood.modelo.ChatDAO;
 import com.tentacruel.dahood.mapeobd.Amigos;
+import com.tentacruel.dahood.modelo.Mensaje;
 
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,8 +57,9 @@ public class ControladorChat {
     
 @MessageMapping("/chat")
 @SendTo("/topic/messages")
-public OutputMessage send(Message message) throws Exception {
-    String time = new SimpleDateFormat("HH:mm").format(new Date());
-    return new OutputMessage(message.getFrom(), message.getText(), time);
+public Chat send(Mensaje  mensaje) throws Exception {
+    //String time = new SimpleDateFormat("HH:mm").format(new Date());
+    return new Chat(mensaje.getUsuario(), mensaje.getTexto());
 }
 }
+
