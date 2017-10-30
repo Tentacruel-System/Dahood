@@ -5,7 +5,7 @@
  */
 package com.tentacruel.dahood.modelo;
 
-import com.tentacruel.dahood.mapeo.Amigos;
+import com.tentacruel.dahood.mapeobd.Amigos;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;

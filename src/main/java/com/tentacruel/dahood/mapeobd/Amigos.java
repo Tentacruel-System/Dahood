@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.tentacruel.dahood.mapeo;
+package com.tentacruel.dahood.mapeobd;
 
 import java.util.Set;
 import javax.persistence.Column;

@@ -5,9 +5,9 @@
 */
 package com.tentacruel.dahood.controlador;
 
-import com.tentacruel.dahood.mapeo.Chat;
+import com.tentacruel.dahood.mapeobd.Chat;
 import com.tentacruel.dahood.modelo.ChatDAO;
-import com.tentacruel.dahood.mapeo.Amigos;
+import com.tentacruel.dahood.mapeobd.Amigos;
 
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
+//import com.baeldung.model.Message;
+//import com.baeldung.model.OutputMessage;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.stereotype.Controller;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 
@@ -43,4 +53,11 @@ public class ControladorChat {
         
        
     }
+    
+@MessageMapping("/chat")
+@SendTo("/topic/messages")
+public OutputMessage send(Message message) throws Exception {
+    String time = new SimpleDateFormat("HH:mm").format(new Date());
+    return new OutputMessage(message.getFrom(), message.getText(), time);
+}
 }
