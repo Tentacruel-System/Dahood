@@ -19,11 +19,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class Controlador {
     
-   @RequestMapping(value="/inicio", method = RequestMethod.GET)
+   @RequestMapping(value="/", method = RequestMethod.GET)
     public String dahood(ModelMap model){
           
         
-        return"plantilla";
+        return"chat-test";
     
     }
     

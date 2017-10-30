@@ -42,7 +42,7 @@ public class ControladorChat {
     ChatDAO chat_db;
 
     
-    @RequestMapping(value="/", method = RequestMethod.GET)
+    @RequestMapping(value="/inicio", method = RequestMethod.GET)
     public ModelAndView amigos(ModelMap model){
         
         List<Amigos> friends = chat_db.getAmigos(1);
@@ -54,7 +54,7 @@ public class ControladorChat {
         
        
     }
-    
+
 @MessageMapping("/chat")
 @SendTo("/topic/messages")
 public Chat send(Mensaje  mensaje) throws Exception {
