@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @ Entity
-@ Table(name = "usuario")
+@ Table(name = "chat")
 /**
  *
  * @author orlando
@@ -30,14 +30,16 @@ public class Chat {
     private int id_usuario2;
     @Column(name = "fecha")
     private String  fecha;
-    
-    private String texto;
+    @Column(name = "ruta")
+    private String ruta;
    
 
-    public Chat( int usuario1, String texto){
+    public Chat( int usuario1, String texto, String fecha){
         
-        this.texto = texto;
+        this.ruta = texto;
         this.id_usuario1 = usuario1;
+        this.fecha = fecha;
+
         
         
     }
@@ -72,6 +74,14 @@ public class Chat {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+    
+    public String getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
     }
 
     

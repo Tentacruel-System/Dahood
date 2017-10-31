@@ -57,9 +57,10 @@ public class ControladorChat {
 
 @MessageMapping("/chat")
 @SendTo("/topic/messages")
-public Chat send(Mensaje  mensaje) throws Exception {
-    //String time = new SimpleDateFormat("HH:mm").format(new Date());
-    return new Chat(mensaje.getUsuario(), mensaje.getTexto());
+public Chat send(String  usuario, String texto) throws Exception {
+    String time = new SimpleDateFormat("HH:mm").format(new Date());
+    System.out.println(usuario);
+    return new Chat(123, texto, time);
 }
 }
 

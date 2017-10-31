@@ -3,17 +3,20 @@
     Created on : 30/10/2017, 01:19:40 PM
     Author     : maw
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Chat WebSocket</title>
         <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-        <script src="stomp.js"></script>
+        <script src="/Dahood/js/stomp.js"></script>
+
+            <!--<link  type="text/javascript" href="<c:url value="/js/stomp.js"/> ">-->
         <script type="text/javascript">
             var stompClient = null;
-             
+          
             function setConnected(connected) {
                 document.getElementById('connect').disabled = connected;
                 document.getElementById('disconnect').disabled = !connected;
@@ -23,15 +26,34 @@
             }
              
             function connect() {
-                var socket = new SockJS('/WEB-INF/jsp/chat-test');
-                stompClient = Stomp.over(socket);  
+                var socket = new SockJS('/Dahood/chat');
+                 socket.onopen = function() {
+                    console.log('open');
+                    sock.send('test');
+                };
+
+                socket.onmessage = function(e) {
+                    console.log('message', e.data);
+                    sock.close();
+                };
+
+                socket.onclose = function() {
+                    console.log('close');
+                };
+                console.log(socket)
+                
+                stompClient =  Stomp.over(socket);  
                 stompClient.connect({}, function(frame) {
                     setConnected(true);
                     console.log('Connected: ' + frame);
                     stompClient.subscribe('/topic/messages', function(messageOutput) {
+                        console.log(messageOutput)
                         showMessageOutput(JSON.parse(messageOutput.body));
                     });
-                });
+                },function(error) {
+                    // display the error's message header:
+                    console.log(error);
+                  });
             }
              
             function disconnect() {
@@ -45,16 +67,15 @@
             function sendMessage() {
                 var from = document.getElementById('from').value;
                 var text = document.getElementById('text').value;
-                stompClient.send("/app/chat", {}, 
-                  JSON.stringify({'from':from, 'text':text}));
+                stompClient.send("/app/chat", {}, text,from);
             }
              
             function showMessageOutput(messageOutput) {
                 var response = document.getElementById('response');
                 var p = document.createElement('p');
                 p.style.wordWrap = 'break-word';
-                p.appendChild(document.createTextNode(messageOutput.from + ": " 
-                  + messageOutput.text + " (" + messageOutput.time + ")"));
+                p.appendChild(document.createTextNode(messageOutput.id_usuario1 + ": " 
+                  + messageOutput.ruta + " (" + messageOutput.fecha + ")"));
                 response.appendChild(p);
             }
         </script>

@@ -23,6 +23,14 @@ public class Controlador {
     public String dahood(ModelMap model){
           
         
+        return"plantilla";
+    
+    }
+    
+     @RequestMapping(value="/chat", method = RequestMethod.GET)
+    public String dahood1(ModelMap model){
+          
+        
         return"chat-test";
     
     }

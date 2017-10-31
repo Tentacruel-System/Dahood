@@ -2,6 +2,7 @@
 
 /*
    Stomp Over WebSocket http://www.jmesnil.net/stomp-websocket/doc/ | Apache License V2.0
+
    Copyright (C) 2010-2013 [Jeff Mesnil](http://jmesnil.net/)
    Copyright (C) 2012 [FuseSource, Inc.](http://fusesource.com)
  */
@@ -26,15 +27,19 @@
     }
 
     Frame.prototype.toString = function() {
-      var lines, name, value, _ref;
+      var lines, name, skipContentLength, value, _ref;
       lines = [this.command];
+      skipContentLength = this.headers['content-length'] === false ? true : false;
+      if (skipContentLength) {
+        delete this.headers['content-length'];
+      }
       _ref = this.headers;
       for (name in _ref) {
         if (!__hasProp.call(_ref, name)) continue;
         value = _ref[name];
         lines.push("" + name + ":" + value);
       }
-      if (this.body) {
+      if (this.body && !skipContentLength) {
         lines.push("content-length:" + (Frame.sizeOfUTF8(this.body)));
       }
       lines.push(Byte.LF + this.body);
@@ -43,7 +48,7 @@
 
     Frame.sizeOfUTF8 = function(s) {
       if (s) {
-        return encodeURI(s).split(/%..|./).length - 1;
+        return encodeURI(s).match(/%..|./g).length;
       } else {
         return 0;
       }
@@ -83,19 +88,29 @@
     };
 
     Frame.unmarshall = function(datas) {
-      var data;
-      return (function() {
+      var frame, frames, last_frame, r;
+      frames = datas.split(RegExp("" + Byte.NULL + Byte.LF + "*"));
+      r = {
+        frames: [],
+        partial: ''
+      };
+      r.frames = (function() {
         var _i, _len, _ref, _results;
-        _ref = datas.split(RegExp("" + Byte.NULL + Byte.LF + "*"));
+        _ref = frames.slice(0, -1);
         _results = [];
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          data = _ref[_i];
-          if ((data != null ? data.length : void 0) > 0) {
-            _results.push(unmarshallSingle(data));
-          }
+          frame = _ref[_i];
+          _results.push(unmarshallSingle(frame));
         }
         return _results;
       })();
+      last_frame = frames.slice(-1)[0];
+      if (last_frame === Byte.LF || (last_frame.search(RegExp("" + Byte.NULL + Byte.LF + "*$"))) !== -1) {
+        r.frames.push(unmarshallSingle(last_frame));
+      } else {
+        r.partial = last_frame;
+      }
+      return r;
     };
 
     Frame.marshall = function(command, headers, body) {
@@ -122,6 +137,7 @@
       };
       this.maxWebSocketFrameSize = 16 * 1024;
       this.subscriptions = {};
+      this.partialData = '';
     }
 
     Client.prototype.debug = function(message) {
@@ -130,7 +146,11 @@
     };
 
     now = function() {
-      return Date.now || new Date().valueOf;
+      if (Date.now) {
+        return Date.now();
+      } else {
+        return new Date().valueOf;
+      }
     };
 
     Client.prototype._transmit = function(command, headers, body) {
@@ -225,15 +245,17 @@
 
     Client.prototype.connect = function() {
       var args, errorCallback, headers, out;
+     
       args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
       out = this._parseConnect.apply(this, args);
       headers = out[0], this.connectCallback = out[1], errorCallback = out[2];
       if (typeof this.debug === "function") {
         this.debug("Opening Web Socket...");
+       
       }
       this.ws.onmessage = (function(_this) {
         return function(evt) {
-          var arr, c, client, data, frame, messageID, onreceive, subscription, _i, _len, _ref, _results;
+          var arr, c, client, data, frame, messageID, onreceive, subscription, unmarshalledData, _i, _len, _ref, _results;
           data = typeof ArrayBuffer !== 'undefined' && evt.data instanceof ArrayBuffer ? (arr = new Uint8Array(evt.data), typeof _this.debug === "function" ? _this.debug("--- got data length: " + arr.length) : void 0, ((function() {
             var _i, _len, _results;
             _results = [];
@@ -253,7 +275,9 @@
           if (typeof _this.debug === "function") {
             _this.debug("<<< " + data);
           }
-          _ref = Frame.unmarshall(data);
+          unmarshalledData = Frame.unmarshall(_this.partialData + data);
+          _this.partialData = unmarshalledData.partial;
+          _ref = unmarshalledData.frames;
           _results = [];
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
             frame = _ref[_i];
@@ -302,6 +326,7 @@
           return _results;
         };
       })(this);
+      
       this.ws.onclose = (function(_this) {
         return function() {
           var msg;
@@ -324,9 +349,12 @@
         };
       })(this);
     };
-
-    Client.prototype.disconnect = function(disconnectCallback) {
-      this._transmit("DISCONNECT");
+        
+    Client.prototype.disconnect = function(disconnectCallback, headers) {
+      if (headers == null) {
+        headers = {};
+      }
+      this._transmit("DISCONNECT", headers);
       this.ws.onclose = null;
       this.ws.close();
       this._cleanUp();
@@ -457,6 +485,10 @@
     Frame: Frame
   };
 
+  if (typeof exports !== "undefined" && exports !== null) {
+    exports.Stomp = Stomp;
+  }
+
   if (typeof window !== "undefined" && window !== null) {
     Stomp.setInterval = function(interval, f) {
       return window.setInterval(f, interval);
@@ -465,9 +497,7 @@
       return window.clearInterval(id);
     };
     window.Stomp = Stomp;
-  } else if (typeof exports !== "undefined" && exports !== null) {
-    exports.Stomp = Stomp;
-  } else {
+  } else if (!exports) {
     self.Stomp = Stomp;
   }
 

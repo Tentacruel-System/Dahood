@@ -23,8 +23,8 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="annotatedClasses">
             <list>
-                <value>com.tentacruel.dahood.mapeo.Amigos</value>
-                <value>com.tentacruel.dahood.mapeo.Chat</value>
+                <value>com.tentacruel.dahood.mapeobd.Amigos</value>
+                <value>com.tentacruel.dahood.mapeobd.Chat</value>
                 
             </list>
         </property>
