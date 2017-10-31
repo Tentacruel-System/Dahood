@@ -57,6 +57,14 @@ public class ControladorPerfil {
     }
     
     /**
+     * Cambia a la vista de Crear Perfil
+     * @return la dirección de la página a visulizar
+     */
+    @RequestMapping(value="/vistaCrearPerfil", method = RequestMethod.GET)
+    public String vistaPerfil(){
+        return "crearPerfil";
+    }
+    /**
      * Permite modificar los datos de un usuario, primero 
      * se hace la petición y se especifica el tipo, luego
      * leemos los campos.

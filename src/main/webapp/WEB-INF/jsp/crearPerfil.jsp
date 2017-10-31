@@ -25,7 +25,7 @@
             </div>
  
             <div id="cuerpo">
- 
+                <!-- action contiene la carpeta del proyecto y el nombre de la peticion -->
                 <form id="form-login" action="/Dahood/crearPerfil" method="post" >
                     
                     <p><label for="nombre">Nombre:</label></p>
