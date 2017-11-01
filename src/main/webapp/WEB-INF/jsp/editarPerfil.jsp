@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/cear_perfilcss.css"/> ">
-        <title>Crear Perfil</title>
+        <title>Editar Perfil</title>
     </head>
     <body>
         
@@ -21,12 +21,12 @@
         <div id="contenedor">
  
             <div id="cabecera">
-                <h2>Crear Perfil</h2>
+                <h2>Editar Perfil</h2>
             </div>
  
             <div id="cuerpo">
                 <!-- action contiene la carpeta del proyecto y el nombre de la peticion -->
-                <form action="/Dahood/crearPerfil" method="post" >
+                <form action="/Dahood/editarPerfil" method="post" >
                     
                     <p><label for="nombre">Nombre:</label>
                     <input name="nombre" type="text" placeholder="...escribe tu nombre" autofocus=""/></p>
@@ -42,6 +42,9 @@
                     
                     <p><label for="correo">Correo:</label>
                     <input name="correo" type="text" placeholder="...escribe tu correo" /></p>
+                    
+                    <p><label for="foto">Foto:</label>
+                    <input name="foto" type="text" placeholder="...cambia tu foto de perfil" /></p>
                     
                     <p><label for="contrasena">Contraseña:</label>
                     <input name="contrasena" type="password" id="pass" class="pass" placeholder="...escribe tu contraseña"/></p>
