@@ -6,7 +6,6 @@
 package com.tentacruel.dahood.modelo;
 
 import com.tentacruel.dahood.mapeobd.Gusto;
-import com.tentacruel.dahood.mapeobd.Usuario;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

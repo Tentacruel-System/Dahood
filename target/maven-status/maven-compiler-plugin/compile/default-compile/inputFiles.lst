@@ -1,1 +1,5 @@
-/home/maw/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/controlador/Controlador.java
+/home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/modelo/Usuario.java
+/home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/mapeobd/GustoDAO.java
+/home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/controlador/IniciarSesion.java
+/home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/modelo/Gusto.java
+/home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/mapeobd/UsuarioDAO.java

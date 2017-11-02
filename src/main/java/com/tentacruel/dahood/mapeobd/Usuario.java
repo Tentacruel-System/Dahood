@@ -167,5 +167,9 @@ public class Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+    
+    public String getContrasena(){
+        return this.contrasena;
+    }
 }
 
