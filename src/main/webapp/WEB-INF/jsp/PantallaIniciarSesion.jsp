@@ -16,5 +16,21 @@
     </head>
     <body>
         <h1>Iniciar Sesión</h1>
-    </body>
+        <form:form method="GET" action = "/Dahood/principal" >
+            <table>
+                <tr>
+                    <td>User:</td>
+                    <td><input type='text' name='usuario' value=''></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type='password' name='contrasena'/></td>
+                </tr>
+                <tr>
+                    <td colspan='2'> 
+                    <input name="submit" type="submit" value="Iniciar Sesión"/>
+                    </td>
+                </tr>
+            </table>
+        </form:form>
 </html>

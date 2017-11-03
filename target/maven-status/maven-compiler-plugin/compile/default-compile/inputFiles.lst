@@ -1,5 +1,8 @@
-/home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/modelo/Usuario.java
-/home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/mapeobd/GustoDAO.java
+/home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/mapeobd/Usuario.java
+/home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/modelo/UsuarioDAO.java
+/home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/mapeobd/Gusto.java
+/home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/seguridad/ConfiguracionDeSeguridad.java
 /home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/controlador/IniciarSesion.java
-/home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/modelo/Gusto.java
-/home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/mapeobd/UsuarioDAO.java
+/home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/seguridad/ServicioUsuario.java
+/home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/seguridad/SecurityWebApplicationInitializer.java
+/home/jesus/NetBeansProjects/Dahood/src/main/java/com/tentacruel/dahood/modelo/GustoDAO.java

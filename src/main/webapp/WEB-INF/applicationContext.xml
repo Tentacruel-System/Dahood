@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/
                            spring-beans-4.3.xsd" >
     
-    <!-- Spring Security -->
-    <bean class="com.tentacruel.dahood.seguridad.ConfiguracionDeSeguridad" />
+    <context:component-scan base-package="com.tentacruel.dahood.seguridad"/>
+    
     <!-- Se especifica la ruta del archivo que tendra los datos de la conexión 
     a la BD, en este caso el archivo se llama database.properties y se encuentra 
     dentro de la carpeta WEB-INF -->

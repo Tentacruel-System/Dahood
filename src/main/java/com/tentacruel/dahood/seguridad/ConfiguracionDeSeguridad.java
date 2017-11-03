@@ -31,7 +31,17 @@ public class ConfiguracionDeSeguridad extends WebSecurityConfigurerAdapter{
     
     }
     @Override
-    protected void configure(HttpSecurity http){
-        http.authorizeRequests().antMatchers(antPatterns)
+    protected void configure(HttpSecurity http) throws Exception{
+        http.authorizeRequests().antMatchers("/").permitAll()
+            .antMatchers("/principal/**").access("hasROLE('USER')")
+            .and()
+            .formLogin().loginPage("/iniciarsesion")
+            .usernameParameter("usuario").passwordParameter("contrasena")
+            .and()
+            .logout()
+            .logoutSuccessUrl("/")
+            .logoutUrl("/salir")
+            .and().csrf().disable();
+        
     }
 }
