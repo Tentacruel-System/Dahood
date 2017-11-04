@@ -5,8 +5,11 @@
  */
 package com.tentacruel.dahood.modelo;
 
+import com.tentacruel.dahood.mapeobd.Amigos;
 import com.tentacruel.dahood.mapeobd.Gusto;
 import com.tentacruel.dahood.mapeobd.Usuario;
+import com.tentacruel.dahood.mapeobd.UsuarioGusto;
+import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -70,7 +73,7 @@ public class GustoDAO {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();            
-            String hql = "FROM Gusto WHERE nombre_gusto =: ng"; //inyectamos nickname en c
+            String hql = "FROM Gusto WHERE nombre_gusto =: ng"; 
             Query query = session.createQuery(hql);
             query.setParameter("ng", nombre_gusto);
             salida = (Gusto)query.uniqueResult();
@@ -144,5 +147,109 @@ public class GustoDAO {
         }
     }
         
+    //Devuele una lista con los Id's de los gustos del usuario dado
+    public List<UsuarioGusto> getGustoId(int usuario){
+       
+        List<UsuarioGusto> result  = null;
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();            
+            String hql = "From UsuarioGusto where id_usuario =: usuario";
+            Query query = session.createQuery(hql);
+            query.setParameter("usuario", usuario);
+            result = (List<UsuarioGusto>)query.list();
+            tx.commit();
+        }
+        catch (Exception e){
+            if(tx != null){
+                tx.rollback();
+            }
+            e.printStackTrace();
+        }
+        finally{
+            session.close();
+        }
+        return result;
+    }
+    
+    //Regresan una lista con el nombre de los gustos dado el Id del gusto
+    public List<Gusto> getGustoNombre(int gusto){
+       
+        List<Gusto> result  = null;
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();            
+            String hql = "From Gusto where id_gusto =: gusto";
+            Query query = session.createQuery(hql);
+            query.setParameter("gusto", gusto);
+            result = (List<Gusto>)query.list();
+            tx.commit();
+        }
+        catch (Exception e){
+            if(tx != null){
+                tx.rollback();
+            }
+            e.printStackTrace();
+        }
+        finally{
+            session.close();
+        }
+        return result;
+    }
+    
+    //Regresa una lista de Ids de los gustos con coincidencias
+    public List<Gusto> getIdGustos_compartidos(String nombre_gusto){
+       
+        List<Gusto> result  = null;
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();            
+            String hql = "From Gusto where nombre_gusto =: nombre_gusto";
+            Query query = session.createQuery(hql);
+            query.setParameter("nombre_gusto", nombre_gusto);
+            result = (List<Gusto>)query.list();
+            tx.commit();
+        }
+        catch (Exception e){
+            if(tx != null){
+                tx.rollback();
+            }
+            e.printStackTrace();
+        }
+        finally{
+            session.close();
+        }
+        return result;
+    }
+     
+    //Regresa una lista de loss id's de las personas con coincidencias
+      public List<UsuarioGusto> getPersonasId(int id_usuario){
+       
+        List<UsuarioGusto> result  = null;
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            //Checar que amigos este bien si no cambiarlo por conocer.
+            String hql = "From UsuarioGusto where id_usuario =: id_usuario";
+            Query query = session.createQuery(hql);
+            query.setParameter("id_usuario", id_usuario);
+            result = (List<UsuarioGusto>)query.list();
+            tx.commit();
+        }
+        catch (Exception e){
+            if(tx != null){
+                tx.rollback();
+            }
+            e.printStackTrace();
+        }
+        finally{
+            session.close();
+        }
+        return result;
+    }
 
 }
