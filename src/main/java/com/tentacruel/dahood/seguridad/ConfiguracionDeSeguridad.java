@@ -24,19 +24,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 public class ConfiguracionDeSeguridad extends WebSecurityConfigurerAdapter{
     @Autowired
     private UsuarioDAO usuarioDB;
-    
-    @Autowired
-    public void configureGlobalSecurity(AuthenticationManagerBuilder auth)
-    throws Exception {
-        auth.inMemoryAuthentication().withUser("john")
-            .password("pa55word")
-            .roles("USER");
-        auth.inMemoryAuthentication().withUser("admin")
-            .password("root123")
-            .roles("USER","ADMIN");
-    }
+   
     @Override
-    @Autowired
     protected void configure(AuthenticationManagerBuilder auth) 
             throws Exception {
         auth.userDetailsService(new ServicioUsuario(usuarioDB));
@@ -44,12 +33,11 @@ public class ConfiguracionDeSeguridad extends WebSecurityConfigurerAdapter{
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http.authorizeRequests().antMatchers("/").permitAll()
-            .antMatchers("/principal/**").access("hasROLE('USER')");
-            
+        http.authorizeRequests().antMatchers("/").permitAll();
+        http.authorizeRequests().antMatchers("/principal/**").access("hasROLE('USER')");
         http.formLogin().loginPage("/iniciarsesion")
             .usernameParameter("usuario").passwordParameter("contrasena");
-        http.formLogin().defaultSuccessUrl("/principal")
+        http.formLogin().defaultSuccessUrl("/principal").loginProcessingUrl("/iniciarsesion")
             .and()
             .logout()
             .logoutSuccessUrl("/")

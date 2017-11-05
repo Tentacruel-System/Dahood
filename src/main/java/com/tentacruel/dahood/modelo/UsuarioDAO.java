@@ -6,17 +6,24 @@
 package com.tentacruel.dahood.modelo;
 
 import com.tentacruel.dahood.mapeobd.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.
+UserDetailsService;
 /**
  * Nos permite modificar datos en la tabla de usuario
  * @author Leonardo Gallo
  */
-public class UsuarioDAO {
+public class UsuarioDAO implements UserDetailsService {
     
     /*Sesion para conectarnos a la base de datos*/
     private SessionFactory sessionFactory;
@@ -75,7 +82,7 @@ public class UsuarioDAO {
         try {
             tx = session.beginTransaction();
             /* Después del from nos referimos a la clase y nickname es el atributo de la clase */
-            String hql = "FROM Usuario WHERE nickname =: c"; //inyectamos nickname en c
+            String hql = "FROM Usuario WHERE nickname = :c"; //inyectamos nickname en c
             Query query = session.createQuery(hql);
             query.setParameter("c", nickname);
             salida = (Usuario)query.uniqueResult();
@@ -145,6 +152,22 @@ public class UsuarioDAO {
         } finally {
             //cerramos simpre la sesion
             session.close();
+        }
+    }
+    
+    @Override
+    public UserDetails loadUserByUsername(String username)
+        throws UsernameNotFoundException {
+        Usuario usuario = this.getUsuario(username);
+        if(usuario != null){
+            List<GrantedAuthority> autorizacion =
+                    new ArrayList<GrantedAuthority>();
+            autorizacion.add(new SimpleGrantedAuthority("ROLE_USUARIO"));
+            return new User(usuario.getNickname(),
+                    usuario.getContrasena(),autorizacion);
+        }else{
+        throw new UsernameNotFoundException("Usuario" + username + 
+                "no encontrado");
         }
     }
 }

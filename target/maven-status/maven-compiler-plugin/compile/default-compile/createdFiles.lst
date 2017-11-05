@@ -1,6 +1,5 @@
 com/tentacruel/dahood/controlador/IniciarSesion.class
 com/tentacruel/dahood/seguridad/ServicioUsuario.class
-com/tentacruel/dahood/seguridad/SecurityWebApplicationInitializer.class
 com/tentacruel/dahood/mapeobd/Gusto.class
 com/tentacruel/dahood/mapeobd/Usuario.class
 com/tentacruel/dahood/modelo/UsuarioDAO.class
