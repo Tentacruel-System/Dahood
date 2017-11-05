@@ -38,7 +38,7 @@ public class ServicioUsuario implements UserDetailsService{
         if(usuario != null){
             List<GrantedAuthority> autorizacion =
                     new ArrayList<GrantedAuthority>();
-            autorizacion.add(new SimpleGrantedAuthority("ROLE_USUARIO"));
+            autorizacion.add(new SimpleGrantedAuthority("ROLE_USER"));
             return new User(usuario.getNickname(),
                     usuario.getContrasena(),autorizacion);
         }else{

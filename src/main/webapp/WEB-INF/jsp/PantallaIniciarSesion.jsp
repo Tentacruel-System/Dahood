@@ -16,7 +16,7 @@
     </head>
     <body>
         <h1>Iniciar Sesión</h1>
-        <form:form method="GET" action = "/Dahood/principal" >
+        <form:form method="POST" action = "/Dahood/principal" >
             <table>
                 <tr>
                     <td>User:</td>

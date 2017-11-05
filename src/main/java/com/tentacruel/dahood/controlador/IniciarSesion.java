@@ -24,13 +24,18 @@ public class IniciarSesion {
         return "PantallaInicio";
     }
     
-    @RequestMapping(value="/iniciarsesion", method = RequestMethod.POST)
+    @RequestMapping(value="/iniciarsesion", method = RequestMethod.GET)
     public String mostrarPantallaIniciarSesion(){
         return "PantallaIniciarSesion";
     }
     
-    @RequestMapping(value="/crearperfil", method = RequestMethod.POST)
+    @RequestMapping(value="/crearperfil", method = RequestMethod.GET)
     public String mostrarPantallaCrearPerfil(){
         return "PantallaCrearPerfil";
+    }
+    
+    @RequestMapping(value="/principal",method = RequestMethod.POST)
+    public String mostrarPantallaPrincipal(){
+        return "PantallaPrincipal";
     }
 }

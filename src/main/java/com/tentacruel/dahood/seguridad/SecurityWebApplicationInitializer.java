@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package com.tentacruel.dahood.seguridad;
-
+import org.springframework.security.web.context.
+        AbstractSecurityWebApplicationInitializer;
 /**
  *
  * @author jesus
  */
-public class SecurityWebApplicationInitializer {
-    
+public class SecurityWebApplicationInitializer extends 
+        AbstractSecurityWebApplicationInitializer {
 }
+    
