@@ -1,18 +1,54 @@
 <%-- 
     Document   : PantallaPrincipal
-    Created on : Nov 4, 2017, 6:54:29 PM
-    Author     : jesus
+    Created on : Nov 6, 2017, 12:29:00 PM
+    Author     : Leonardo
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="<c:url value="/css/Inicio.css"/> ">
+        <title>Principal</title>
     </head>
     <body>
-        <h1><a href="<c:url value="/salir"/>"> Salir</a></h1>
+        <div class="container-fluid principal">
+            <header>
+                <ul class="nav nav-pills nav-justified">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Ver Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Buscar</a>
+                    </li>
+                    <li class="nav-item">
+                        <h1><a href="<c:url value="/salir"/>"> Salir</a></h1>
+                    </li>
+                </ul>
+            </header>
+
+
+            <div class ="container-fluid">
+                <div class = "row">
+
+                    <div class ="col-10 style" style = "padding-top: 1px">
+                        <form:form method="GET" action = "/Dahood/vistaEditarPerfil" id = "editarperfil"></form:form>
+                        <input type="submit" form ="editarperfil" value="Editar Perfil"/>
+                    </div>
+                    <div class ="col-2 barraElementos">
+
+                    </div>
+
+                </div>
+            </div>    
+        </div>
     </body>
 </html>
