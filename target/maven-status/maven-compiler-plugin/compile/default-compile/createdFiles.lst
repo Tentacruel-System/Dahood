@@ -3,3 +3,4 @@ com/tentacruel/dahood/modelo/UsuarioDAO.class
 com/tentacruel/dahood/mapeobd/Gusto.class
 com/tentacruel/dahood/modelo/GustoDAO.class
 com/tentacruel/dahood/mapeobd/Usuario.class
+com/tentacruel/dahood/controlador/ControladorPerfil.class
