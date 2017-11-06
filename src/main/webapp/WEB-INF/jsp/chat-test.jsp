@@ -67,6 +67,7 @@
             function sendMessage() {
                 var from = document.getElementById('from').value;
                 var text = document.getElementById('text').value;
+                console.log('Soy un console log:',from, text)
                 stompClient.send("/app/chat", {}, text,from);
             }
              
