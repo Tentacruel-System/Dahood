@@ -31,7 +31,7 @@
                             type="submit">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Chat</a>
+                        <a class="nav-link" href="/Dahood/chat">Chat</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Buscar</a>

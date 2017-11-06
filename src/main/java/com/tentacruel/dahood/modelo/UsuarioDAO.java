@@ -6,6 +6,7 @@
 package com.tentacruel.dahood.modelo;
 
 import com.tentacruel.dahood.mapeobd.Usuario;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
@@ -169,5 +170,7 @@ public class UsuarioDAO implements UserDetailsService {
         throw new UsernameNotFoundException("Usuario" + username + 
                 "no encontrado");
         }
+    
     }
 }
+    

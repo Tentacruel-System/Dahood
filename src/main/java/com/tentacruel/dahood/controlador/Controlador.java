@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+
 /**
  *
  * @author maw
@@ -23,6 +24,14 @@ public class Controlador {
           
         
         return"inicio";
+    
+    }
+    
+     @RequestMapping(value="/chat", method = RequestMethod.GET)
+    public String dahood1(ModelMap model){
+          
+        
+        return"chat-test";
     
     }
     

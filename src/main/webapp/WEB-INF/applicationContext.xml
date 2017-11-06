@@ -55,8 +55,14 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="annotatedClasses">
             <list>
+
                 <value>com.tentacruel.dahood.mapeobd.Gusto</value>
                 <value>com.tentacruel.dahood.mapeobd.Usuario</value>
+
+                <value>com.tentacruel.dahood.mapeobd.Amigos</value>
+                <value>com.tentacruel.dahood.mapeobd.Chat</value>
+                
+
             </list>
         </property>
         <property name="hibernateProperties">
@@ -69,6 +75,7 @@
         </property>
     </bean>
     
+
     <!--  Se crea beans para que sean inyectados en el controlador 
     con la etiqueta @Autowired. También se les inyecta un bean de 
     AnnotatedSessionFactory-->
@@ -76,4 +83,13 @@
         p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"/>
     <bean id="UsuarioDAO" class="com.tentacruel.dahood.modelo.UsuarioDAO"
         p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"/>
+
+    <!--  Se agrega para poder inyectarlo a los Controladores, revisa EjemploController.java
+          en el paquete controlador, se esta haciendo uso de @Autowired-->
+    <!--Ejemplo para configurar bean-->
+    
+    <bean id="ChatDAO"  class="com.tentacruel.dahood.modelo.ChatDAO"  p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"/>
+    
+
+
 </beans>
