@@ -8,3 +8,7 @@ and open the template in the editor.
     Author     : jesus
 */
 
+form{
+    margin: 0 auto; 
+    width:250px;
+}

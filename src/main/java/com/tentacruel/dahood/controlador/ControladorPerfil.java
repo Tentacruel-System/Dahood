@@ -119,13 +119,29 @@ public class ControladorPerfil {
         return "redirect:/principal";
     }
     
-    /**
-     * 
-     * @param user
-     * @return 
-     */
-    @RequestMapping(value= "/verPerfil", method = RequestMethod.GET)
-    public String verPerfil(Usuario user){
-        return "";
+    
+    @RequestMapping(value="/eliminarPerfil", method=RequestMethod.GET)
+    public String eliminarPerfil(Authentication authentication){
+        UserDetails usuario = (UserDetails) authentication.getPrincipal();
+        String usuarioLoggeado = usuario.getUsername();
+        Usuario user = usuario_db.getUsuario(usuarioLoggeado);
+        usuario_db.eliminar(user);
+        return "redirect:/salir";
+    }
+            
+       @RequestMapping(value= "/verPerfil", method = RequestMethod.GET)
+    public ModelAndView verPerfil(HttpServletRequest request, ModelMap model, Authentication authentication){
+        UserDetails usuario = (UserDetails) authentication.getPrincipal();
+        String usuarioLoggeado = usuario.getUsername();
+        Usuario user = usuario_db.getUsuario(usuarioLoggeado);
+        
+        String nombre = user.getNombre() + " " + user.getApellidoPaterno() + " " + user.getApellidoMaterno();
+        String nickname = user.getNickname();
+        String correo= user.getCorreo();
+        model.addAttribute("nombre", nombre);
+        model.addAttribute("nickname", nickname);
+        model.addAttribute("correo", correo);
+        
+        return new ModelAndView("verPerfil",model);
     }
 }

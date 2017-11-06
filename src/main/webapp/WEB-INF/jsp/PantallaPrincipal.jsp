@@ -21,7 +21,14 @@
             <header>
                 <ul class="nav nav-pills nav-justified">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Ver Perfil</a>
+                        <form:form method="GET" action = "/Dahood/verPerfil" 
+                                   id = "verperfil">
+                        </form:form>
+                        <input 
+                            class="btn btn-primary btn-lg" 
+                            form="verperfil"
+                            value="Ver Perfil"
+                            type="submit">
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Chat</a>

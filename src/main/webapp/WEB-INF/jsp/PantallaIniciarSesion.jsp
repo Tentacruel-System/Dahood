@@ -21,6 +21,10 @@
             rel="stylesheet" 
             type="text/css" 
             href='<c:url value="/css/Inicio.css"/>'/>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="<c:url value="/css/IniciarSesion.css"/>"/>
     </head>
     <body id="grad2">
         <nav class="navbar navbar-light bg-faded">
@@ -37,23 +41,21 @@
                 <h1 class="display-1">Dahood</h1>
                 <p class="lead">La red social para los nuevos amigos.</p>
                 <hr class="my-4">
-                    <form:form class="iniciarsesion" method="POST" action = "/Dahood/iniciarsesion">
-                        <table>
-                            <tr>
-                                <td>User:</td>
-                                <td><input type='text' name='usuario' value=''></td>
-                            </tr>
-                            <tr>
-                                <td>Password:</td>
-                                <td><input type='password' name='contrasena'/></td>
-                            </tr>
-                            <tr>
-                                <td colspan='2'> 
-                                <input class="btn btn-primary btn-lg" name="submit" type="submit" value="Iniciar Sesión"/>
-                                </td>
-                            </tr>
-                         </table>
-                    </form:form>
+                <div class="row">
+                    <div class="form">
+                        <form:form method="POST" action="/Dahood/iniciarsesion" id="loginForm">
+                            <div class="form-group input-group">
+                                <input class="form-control" type="text" name='usuario' placeholder="Usuario"/>          
+                            </div>
+                            <div class="form-group input-group">
+                                <input class="form-control" type="password" name='contrasena' placeholder="Contrasena"/>     
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary btn-lg" value="Iniciar Sesión"/>
+                            </div>
+                        </form:form>         
+                    </div>    
+                </div>
             </div>
         </div>
         <div>

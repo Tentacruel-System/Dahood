@@ -25,7 +25,7 @@
         <form:form method="GET" action = "/Dahood/iniciarsesion" 
                    id = "iniciarsesion">
         </form:form>
-        <form:form method="GET" action = "/Dahood/crearperfil" 
+        <form:form method="GET" action = "/Dahood/vistaCrearPerfil" 
                    id = "crearperfil">
         </form:form>
         <div class = "container-fluid">

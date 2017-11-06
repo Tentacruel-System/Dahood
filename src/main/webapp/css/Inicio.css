@@ -28,19 +28,6 @@ and open the template in the editor.
     font-size: 2.25rem;
     text-align: center;
 }
-
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-iniciarsesion{
-    padding: 16px;
-}
 #grad2 {
     
     background: linear-gradient(#bfe9ff,#ff6e7f); /* Standard syntax (must be last) */
