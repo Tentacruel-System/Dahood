@@ -21,14 +21,7 @@
             <header>
                 <ul class="nav nav-pills nav-justified">
                     <li class="nav-item">
-                        <form:form method="GET" action = "/Dahood/verPerfil" 
-                                   id = "verperfil">
-                        </form:form>
-                        <input 
-                            class="btn btn-primary btn-lg" 
-                            form="verperfil"
-                            value="Ver Perfil"
-                            type="submit">
+                        <a class="nav-link active" href="#">Ver Perfil</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Chat</a>
@@ -47,7 +40,13 @@
                 <div class = "row">
 
                     <div class ="col-10 style" style = "padding-top: 1px">
-                        <h1>Dahood</h1>
+                        <aside>
+                            <h1> ${nombre}</h1>
+                            <h2>${nickname} </h2>
+                            <h2>${correo} </h2>
+                        </aside>
+                        <form:form method="GET" action = "/Dahood/vistaEditarPerfil" id = "editarperfil"></form:form>
+                        <input type="submit" form ="editarperfil" value="Editar Perfil"/>
                     </div>
                     <div class ="col-2 barraElementos">
 

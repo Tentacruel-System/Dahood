@@ -23,7 +23,12 @@
 </nav>
 </head>
 <body id ="grad2" >
-
+    <form:form method="GET" action = "/Dahood/iniciarsesion" 
+               id = "iniciarsesion">
+    </form:form>
+    <form:form method="GET" action = "/Dahood/vistaCrearPerfil" 
+               id = "crearperfil">
+    </form:form>
     <div class = "container-fluid">
         <div class="jumbotron transparente" >
             <h1 class="display-1">Dahood</h1>
@@ -31,18 +36,16 @@
             <hr class="my-4">
 
             <p class="lead">
-                <form:form method="GET" action = "/Dahood/iniciarsesion" id = "iniciarsesion"></form:form>
-                <form:form method="GET" action = "/Dahood/vistaCrearPerfil" id = "crearperfil"></form:form>
-            <table>
-                <tr>
-                    <td colspan="2"><input type="submit" form ="iniciarsesion" 
-                                           value = "Iniciar Sesión"/>
-                    </td>
-                    <td colspan="2"><input type="submit" form ="crearperfil"
-                                           value="Crear Perfil"/>
-                    </td>
-                </tr>
-            </table>
+                <input 
+                    class="btn btn-primary btn-lg" 
+                    form="iniciarsesion"
+                    value="Iniciar sesión"
+                    type="submit">
+                <input 
+                    type="submit" 
+                    form ="crearperfil"
+                    class="btn btn-primary btn-lg"                
+                    value="Crear Perfil"/>
             </p>
         </div>
     </div>

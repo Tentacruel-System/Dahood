@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,6 +7,8 @@
 package com.tentacruel.dahood.controlador;
 
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import com.tentacruel.dahood.mapeobd.Usuario;
 import com.tentacruel.dahood.modelo.UsuarioDAO;
 import java.util.List;
@@ -82,17 +85,18 @@ public class ControladorPerfil {
      * @return nos regresa a la página principal
      */
     @RequestMapping(value= "/editarPerfil", method = RequestMethod.POST)
-    public String editarPerfil(HttpServletRequest request){
+    public String editarPerfil(HttpServletRequest request, Authentication authentication){
         String nombre = request.getParameter("nombre");
         String apellido_p = request.getParameter("apellido_p");
         String apellido_m = request.getParameter("apellido_m");
-        String nickname = request.getParameter("nickname");
         String correo = request.getParameter("correo");
         String contrasena = request.getParameter("contrasena");
         String foto = request.getParameter("foto");
         
         //debe ser el nickname del usuario que esta en la sesion
-        Usuario user = usuario_db.getUsuario(nickname);
+        UserDetails usuario = (UserDetails) authentication.getPrincipal();
+        String usuarioLoggeado = usuario.getUsername();
+        Usuario user = usuario_db.getUsuario(usuarioLoggeado);
         //Debemos verificar cuales son los campos que el ususario necesita actualizar
         if (!nombre.isEmpty())
             user.setNombre(nombre);
@@ -100,8 +104,6 @@ public class ControladorPerfil {
             user.setApellidoPaterno(apellido_p);
         if (!apellido_m.isEmpty())
             user.setApellidoMaterno(apellido_m);
-        if (!nickname.isEmpty())
-            user.setNickname(nickname);
         if (!correo.isEmpty())
             user.setCorreo(correo);
         if (!contrasena.isEmpty())
@@ -111,7 +113,7 @@ public class ControladorPerfil {
         //persistencia en la base de datos
         //se actualiza directo en la base de datos
         usuario_db.actualizar(user);
-        return "redirect:/";
+        return "redirect:/principal";
     }
     
     /**
@@ -120,7 +122,18 @@ public class ControladorPerfil {
      * @return 
      */
     @RequestMapping(value= "/verPerfil", method = RequestMethod.GET)
-    public String verPerfil(Usuario user){
-        return "";
+    public ModelAndView verPerfil(HttpServletRequest request, ModelMap model, Authentication authentication){
+        UserDetails usuario = (UserDetails) authentication.getPrincipal();
+        String usuarioLoggeado = usuario.getUsername();
+        Usuario user = usuario_db.getUsuario(usuarioLoggeado);
+        
+        String nombre = user.getNombre() + " " + user.getApellidoPaterno() + " " + user.getApellidoMaterno();
+        String nickname = user.getNickname();
+        String correo= user.getCorreo();
+        model.addAttribute("nombre", nombre);
+        model.addAttribute("nickname", nickname);
+        model.addAttribute("correo", correo);
+        
+        return new ModelAndView("verPerfil",model);
     }
 }

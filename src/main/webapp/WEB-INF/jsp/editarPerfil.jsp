@@ -60,9 +60,6 @@
                                         <p><label for="apellido_m">Apellido materno:</label>
                                             <input name="apellido_m" type="text" placeholder="...escribe apellido materno" /></p>
 
-                                        <p><label for="nickname">Nickname:</label>
-                                            <input name="nickname" type="text" placeholder="...elige un nickname" /></p>
-
                                         <p><label for="correo">Correo:</label>
                                             <input name="correo" type="text" placeholder="...escribe tu correo" /></p>
 
