@@ -23,16 +23,26 @@
 </nav>
 </head>
 <body id ="grad2" >
-    
+
     <div class = "container-fluid">
         <div class="jumbotron transparente" >
             <h1 class="display-1">Dahood</h1>
             <p class="lead">La red social para los nuevos amigos.   </p>
             <hr class="my-4">
-            
+
             <p class="lead">
-                <a class="btn btn-primary btn-lg" href="#" role="button">Iniciar Sesion</a>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Registrarse</a>
+                <form:form method="GET" action = "/Dahood/iniciarsesion" id = "iniciarsesion"></form:form>
+                <form:form method="GET" action = "/Dahood/vistaCrearPerfil" id = "crearperfil"></form:form>
+            <table>
+                <tr>
+                    <td colspan="2"><input type="submit" form ="iniciarsesion" 
+                                           value = "Iniciar Sesión"/>
+                    </td>
+                    <td colspan="2"><input type="submit" form ="crearperfil"
+                                           value="Crear Perfil"/>
+                    </td>
+                </tr>
+            </table>
             </p>
         </div>
     </div>
@@ -43,7 +53,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Card title</h4>
                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    
+
                 </div>
             </div>
             <div class="card">
@@ -51,7 +61,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Card title</h4>
                     <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                    
+
                 </div>
             </div>
             <div class="card">
@@ -59,15 +69,15 @@
                 <div class="card-body">
                     <h4 class="card-title">Card title</h4>
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                    
+
                 </div>
             </div>
         </div>
     </div>
-    
+
     <footer class ="footer">    
         sdasdadasd
     </footer>
-    
+
 </body>
 

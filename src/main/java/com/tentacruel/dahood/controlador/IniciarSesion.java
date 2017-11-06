@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class IniciarSesion {
     
-    @RequestMapping(value ="/", method = RequestMethod.GET)
-    public String mostrarPantallaInicio(){
-        return "PantallaInicio";
-    }
+//    @RequestMapping(value ="/", method = RequestMethod.GET)
+//    public String mostrarPantallaInicio(){
+//        return "PantallaInicio";
+//    }
     
     @RequestMapping(value="/iniciarsesion", method = RequestMethod.GET)
     public String mostrarPantallaIniciarSesion(){
