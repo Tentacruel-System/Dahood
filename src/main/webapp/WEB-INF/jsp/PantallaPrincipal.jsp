@@ -13,6 +13,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1><a href="<c:url value="/salir"/>"> Salir</a></h1>
+        <h1><a href='<c:url value="/salir"/>'> Salir</a></h1>
     </body>
 </html>
