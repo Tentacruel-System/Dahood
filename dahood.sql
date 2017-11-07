@@ -102,7 +102,7 @@ DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario` (
-  `id_usuario` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `contrasena` varchar(40) NOT NULL,
   `foto` varchar(100) NOT NULL,
   `nombre` varchar(40) NOT NULL,

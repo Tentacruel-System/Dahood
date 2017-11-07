@@ -116,6 +116,16 @@ public class ControladorPerfil {
         return "redirect:/principal";
     }
     
+    
+    @RequestMapping(value="/eliminarPerfil", method=RequestMethod.GET)
+    public String eliminarPerfil(Authentication authentication){
+        UserDetails usuario = (UserDetails) authentication.getPrincipal();
+        String usuarioLoggeado = usuario.getUsername();
+        Usuario user = usuario_db.getUsuario(usuarioLoggeado);
+        usuario_db.eliminar(user);
+        return "redirect:/salir";
+    }
+    
     /**
      * 
      * @param user

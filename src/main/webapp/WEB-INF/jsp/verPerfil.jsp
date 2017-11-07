@@ -34,24 +34,28 @@
                     </li>
                 </ul>
             </header>
-
-
+            
+            
             <div class ="container-fluid">
                 <div class = "row">
-
+                    
                     <div class ="col-10 style" style = "padding-top: 1px">
                         <aside>
                             <h1> ${nombre}</h1>
                             <h2>${nickname} </h2>
                             <h2>${correo} </h2>
                         </aside>
+                        <form:form method="GET" action = "/Dahood/eliminarPerfil" id = "eliminarPerfil" ></form:form>
                         <form:form method="GET" action = "/Dahood/vistaEditarPerfil" id = "editarperfil"></form:form>
-                        <input type="submit" form ="editarperfil" value="Editar Perfil"/>
+                        <p class="lead">
+                            <input type="submit" class="btn btn-primary btn-lg" form="eliminarPerfil" value ="Eliminar Perfil"/>
+                            <input type="submit" class="btn btn-primary btn-lg" form ="editarperfil" value="Editar Perfil"/>
+                        </p>
                     </div>
                     <div class ="col-2 barraElementos">
-
+                        
                     </div>
-
+                    
                 </div>
             </div>    
         </div>
