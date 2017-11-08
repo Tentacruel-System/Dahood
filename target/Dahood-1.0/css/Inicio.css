@@ -16,7 +16,7 @@ and open the template in the editor.
 }
 
 .display-1{
-    font-size: 15rem;
+    
     text-align: center;
 }
 
@@ -68,9 +68,7 @@ and open the template in the editor.
 }
 
 
-.container-fluid {
-    padding: 0px;
-}
+
 
 @media (max-width: 797px) {
     body { 

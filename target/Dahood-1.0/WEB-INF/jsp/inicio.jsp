@@ -18,7 +18,7 @@
 <nav class="navbar navbar-light bg-faded">
     <a class="navbar-brand" href="#">
         <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-        Bootstrap
+        Dahood
     </a>
 </nav>
 </head>
@@ -54,7 +54,7 @@
         <div class="card-deck" >
             <div class="card">
                 <img class="card-img-top" src="https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg" alt="Card image cap">
-                <div class="card-body" id="grad2">
+                <div class="card-body">
                     <h4 class="card-title">Card title</h4>
                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 </div>
@@ -80,7 +80,7 @@
     
     <footer class ="footer">    
         <div class="container-fluid">
-            Pene
+            Tentacruel
             
         </div>
     </footer>
