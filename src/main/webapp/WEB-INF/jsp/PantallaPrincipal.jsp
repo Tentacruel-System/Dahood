@@ -31,13 +31,34 @@
                             type="submit">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Dahood/principal/chat">Chat</a>
+                        <form:form method="GET" action = "/Dahood/principal/chat" 
+                                   id = "chat">
+                        </form:form>
+                        <input 
+                            class="btn btn-primary btn-lg" 
+                            form="chat"
+                            value="Chat"
+                            type="submit">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Buscar</a>
+                        <form:form method="GET" action = "/Dahood/principal/Buscar" 
+                                   id = "buscar">
+                        </form:form>
+                        <input 
+                            class="btn btn-primary btn-lg" 
+                            form="buscar"
+                            value="Buscar"
+                            type="submit">
                     </li>
                     <li class="nav-item">
-                        <h1><a href="<c:url value="/salir"/>"> Salir</a></h1>
+                        <form:form method="GET" action = "/Dahood/principal/salir" 
+                                   id = "salir">
+                        </form:form>
+                        <input 
+                            class="btn btn-primary btn-lg" 
+                            form="salir"
+                            value="Salir"
+                            type="submit">
                     </li>
                 </ul>
             </header>

@@ -10,6 +10,9 @@
 <html>
     <head>
         <title>Chat WebSocket</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="<c:url value="/css/Inicio.css"/> ">
         <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
         <script src="/Dahood/js/stomp.js"></script>
 
@@ -82,6 +85,51 @@
         </script>
     </head>
     <body onload="disconnect()">
+        <div class="container-fluid principal">
+            <header>
+                <ul class="nav nav-pills nav-justified">
+                    <li class="nav-item">
+                         <form:form method="GET" action = "/Dahood/principal/verPerfil" 
+                                   id = "verperfil">
+                        </form:form>
+                        <input 
+                            class="btn btn-primary btn-lg" 
+                            form="verperfil"
+                            value="Ver Perfil"
+                            type="submit">
+                    </li>
+                    <li class="nav-item">
+                        <form:form method="GET" action = "/Dahood/principal/chat" 
+                                   id = "chat">
+                        </form:form>
+                        <input 
+                            class="btn btn-primary btn-lg" 
+                            form="chat"
+                            value="Chat"
+                            type="submit">
+                    </li>
+                    <li class="nav-item">
+                        <form:form method="GET" action = "/Dahood/principal/buscar" 
+                                   id = "buscar">
+                        </form:form>
+                        <input 
+                            class="btn btn-primary btn-lg" 
+                            form="buscar"
+                            value="Buscar"
+                            type="submit">
+                    </li>
+                    <li class="nav-item">
+                        <form:form method="GET" action = "/Dahood/principal/salir" 
+                                   id = "salir">
+                        </form:form>
+                        <input 
+                            class="btn btn-primary btn-lg" 
+                            form="salir"
+                            value="Salir"
+                            type="submit">
+                    </li>
+                </ul>
+            </header>
         <div>
             <div>
                 <input type="text" id="from" placeholder="Choose a nickname"/>
@@ -100,6 +148,6 @@
                 <p id="response"></p>
             </div>
         </div>
- 
+    </div>           
     </body>
 </html>
