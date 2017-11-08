@@ -1,4 +1,4 @@
-<%-- 
+    <%-- 
     Document   : PantallaPrincipal
     Created on : Nov 6, 2017, 12:29:00 PM
     Author     : Leonardo
@@ -17,7 +17,7 @@
         <title>Principal</title>
     </head>
     <body>
-        <div class="container-fluid principal">
+        <div class="container-fluid">
             <header>
                 <ul class="nav nav-pills nav-justified">
                     <li class="nav-item">
