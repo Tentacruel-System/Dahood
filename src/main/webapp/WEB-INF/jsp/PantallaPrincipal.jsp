@@ -21,7 +21,7 @@
             <header>
                 <ul class="nav nav-pills nav-justified">
                     <li class="nav-item">
-                        <form:form method="GET" action = "/Dahood/verPerfil" 
+                        <form:form method="GET" action = "/Dahood/principal/verPerfil" 
                                    id = "verperfil">
                         </form:form>
                         <input 
@@ -31,7 +31,7 @@
                             type="submit">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Dahood/chat">Chat</a>
+                        <a class="nav-link" href="/Dahood/principal/chat">Chat</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Buscar</a>

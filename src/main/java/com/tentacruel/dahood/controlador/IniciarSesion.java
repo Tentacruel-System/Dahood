@@ -29,11 +29,6 @@ public class IniciarSesion {
         return "PantallaIniciarSesion";
     }
     
-    @RequestMapping(value="/crearperfil", method = RequestMethod.GET)
-    public String mostrarPantallaCrearPerfil(){
-        return "PantallaCrearPerfil";
-    }
-    
     @RequestMapping(value="/principal",method = RequestMethod.GET)
     public String mostrarPantallaPrincipal(){
         return "PantallaPrincipal";

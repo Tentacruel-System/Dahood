@@ -17,7 +17,7 @@
         <form:form method="GET" action = "/Dahood/iniciarsesion" 
                    id = "iniciarsesion">
         </form:form>
-        <form:form method="GET" action = "/Dahood/crearperfil" 
+        <form:form method="GET" action = "/Dahood/crearPerfil" 
                    id = "crearperfil">
         </form:form>
         <table>
