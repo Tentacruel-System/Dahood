@@ -11,7 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+import java.util.Set;
+import javax.persistence.ManyToMany;
 /**
  *
  * @author david
@@ -25,6 +26,9 @@ public class Gusto {
            
     @Column(name = "nombre_gusto")
     private String nombre_gusto;
+    
+    @ManyToMany(mappedBy = "gustos")
+    private Set<Usuario> usuarios;
 
     public int getId_gusto() {
         return id_gusto;
@@ -42,5 +46,11 @@ public class Gusto {
         this.nombre_gusto = nombre_gusto;
     }
     
+    public void setUsuarios(Set<Usuario> usuarios){
+        this.usuarios = usuarios;
+    }
     
+    public Set<Usuario> getUsuarios(){
+        return this.usuarios;
+    }
 }

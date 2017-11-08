@@ -4,21 +4,25 @@
  * and open the template in the editor.
  */
 package com.tentacruel.dahood.mapeobd;
-
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import java.util.Set;
+import java.io.Serializable;
 /**
  * Hacemos el mapeo de un elemento de la tabla usuario a un objeto Usuario
  * @author Leonardo Gallo
  */
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class Usuario implements Serializable{
+   
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
     private int id_usuario;
@@ -43,7 +47,14 @@ public class Usuario {
 
     @Column(name = "correo")
     private String correo;
- 
+    
+    @ManyToMany
+    @JoinTable(
+        name="usuario_gusto",
+        joinColumns = {@JoinColumn(name="id_usuario")},
+        inverseJoinColumns = {@JoinColumn(name="id_gusto")})
+    private Set<Gusto> gustos;
+                
     //parece que es la relación establecida con otras tablas
     //@OneToMany(mappedBy = "Usuario") //esto para qué?
     //private Set<Marcador> marcadores; //es de la tabla o la base?
@@ -90,7 +101,7 @@ public class Usuario {
 
     /**
      * Permite cambiar el nombre del usuario
-     * @param nickname 
+     * @param nombre 
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -168,10 +179,50 @@ public class Usuario {
         this.correo = correo;
     }
 
-    
+    /**
+     * Da la contrasena del usuario
+     * @return Contrasena del usuario 
+     */
     public String getContrasena(){
         return this.contrasena;
     }
+    
+    /**
+     * Regresa el conjunto de gustos de este usuario
+     * @return Conjunto de gustos
+     */
+    public Set<Gusto> getGustos(){
+        return this.gustos;
+    }
+    
+    /**
+     * @param gustos Conjunto de gustos 
+     */
+    public void setGustos(Set<Gusto> gustos){
+        this.gustos = gustos;
+    }
+    
+    /**
+     * Agrega un gusto a la lista de gustos del usuario.
+     * También agregar este objeto a la lista de usuario
+     * del gusto que se va a agregar.
+     * @param g El gusto a agregar
+     */
+    public void agregarGusto(Gusto g){
+        this.gustos.add(g);
+        g.getUsuarios().add(this);
+    }
+    
+    /**
+     * Elimina un gusto de la lista de gusto del usuario.
+     * También elimina este usuario de la lista de usuarios del
+     * gusto que se va a eliminar.
+     * @param g El gusto a eliminar 
+     */
+    public void eliminarGusto(Gusto g){
+        this.gustos.remove(g);
+        g.getUsuarios().remove(this);
+    }
+ }
 
-}
 
