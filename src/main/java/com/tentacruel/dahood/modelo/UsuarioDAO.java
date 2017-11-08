@@ -94,6 +94,68 @@ public class UsuarioDAO {
     }
     
     /**
+     * Regresa el usuario de la base de datos en forma de objeto
+     *
+     * @param nickname del usuario que se busca
+     * @return salida que es el usuario con el nickname dado
+     */
+    public Usuario getUsuario_by_Id(int id_usuario) {
+        //Creamos una variable donde vamos a guardar el usuario solicitado
+        Usuario salida = null;
+        //Se inicia la sesión
+        Session session = sessionFactory.openSession();
+        //...la transacción a realizar
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            /* Después del from nos referimos a la clase y nickname es el atributo de la clase */
+            String hql = "FROM Usuario WHERE id_usuario = :id_usuario"; //inyectamos nickname en c
+            Query query = session.createQuery(hql);
+            query.setParameter("id_usuario", id_usuario);
+            salida = (Usuario)query.uniqueResult();
+            tx.commit();
+        } catch (Exception e) {
+            //Se regresa a un estado consistente 
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            //cerramos simpre la sesion
+            session.close();
+        }
+        return salida;
+    }
+    
+    public List<Usuario> getUsuarios(int id_usuario) {
+        //Creamos una variable donde vamos a guardar el usuario solicitado
+        List<Usuario> salida = null;
+        //Se inicia la sesión
+        Session session = sessionFactory.openSession();
+        //...la transacción a realizar
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            /* Después del from nos referimos a la clase y nickname es el atributo de la clase */
+            String hql = "FROM Usuario WHERE id_usuario = :id_usuario"; //inyectamos nickname en c
+            Query query = session.createQuery(hql);
+            query.setParameter("id_usuario", id_usuario);
+            salida = (List<Usuario>)query.list();
+            tx.commit();
+        } catch (Exception e) {
+            //Se regresa a un estado consistente 
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            //cerramos simpre la sesion
+            session.close();
+        }
+        return salida;
+    }
+    
+    /**
      * Elimina el usuario de la base de datos
      *
      * @param user el usuario a eliminar

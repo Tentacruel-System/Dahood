@@ -73,7 +73,7 @@ public class GustoDAO {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();            
-            String hql = "FROM Gusto WHERE nombre_gusto =: ng"; 
+            String hql = "FROM Gusto WHERE nombre_gusto = :ng"; 
             Query query = session.createQuery(hql);
             query.setParameter("ng", nombre_gusto);
             salida = (Gusto)query.uniqueResult();
@@ -155,7 +155,7 @@ public class GustoDAO {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();            
-            String hql = "From UsuarioGusto where id_usuario =: usuario";
+            String hql = "from UsuarioGusto where id_usuario = :usuario";
             Query query = session.createQuery(hql);
             query.setParameter("usuario", usuario);
             result = (List<UsuarioGusto>)query.list();
@@ -181,7 +181,7 @@ public class GustoDAO {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();            
-            String hql = "From Gusto where id_gusto =: gusto";
+            String hql = "From Gusto where id_gusto = :gusto";
             Query query = session.createQuery(hql);
             query.setParameter("gusto", gusto);
             result = (List<Gusto>)query.list();
@@ -207,7 +207,7 @@ public class GustoDAO {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();            
-            String hql = "From Gusto where nombre_gusto =: nombre_gusto";
+            String hql = "From Gusto where nombre_gusto = :nombre_gusto";
             Query query = session.createQuery(hql);
             query.setParameter("nombre_gusto", nombre_gusto);
             result = (List<Gusto>)query.list();
@@ -224,7 +224,33 @@ public class GustoDAO {
         }
         return result;
     }
+    //Regresa una lista de Ids de los gustos con coincidencias
+    public List<Gusto> getIdGustos_compartidos2(int id_gusto){
+       
+        List<Gusto> result  = null;
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();            
+            String hql = "From Gusto where id_gusto = :id_gusto";
+            Query query = session.createQuery(hql);
+            query.setParameter("id_gusto", id_gusto);
+            result = (List<Gusto>)query.list();
+            tx.commit();
+        }
+        catch (Exception e){
+            if(tx != null){
+                tx.rollback();
+            }
+            e.printStackTrace();
+        }
+        finally{
+            session.close();
+        }
+        return result;
+    }
      
+    
     //Regresa una lista de loss id's de las personas con coincidencias
       public List<UsuarioGusto> getPersonasId(int id_usuario){
        
@@ -234,7 +260,7 @@ public class GustoDAO {
         try{
             tx = session.beginTransaction();
             //Checar que amigos este bien si no cambiarlo por conocer.
-            String hql = "From UsuarioGusto where id_usuario =: id_usuario";
+            String hql = "From UsuarioGusto where id_usuario = :id_usuario";
             Query query = session.createQuery(hql);
             query.setParameter("id_usuario", id_usuario);
             result = (List<UsuarioGusto>)query.list();
@@ -250,6 +276,61 @@ public class GustoDAO {
             session.close();
         }
         return result;
+    }
+      
+      //Regresa una lista de loss id's de las personas con coincidencias
+      public List<UsuarioGusto> getPersonasId2(int id_gusto){
+       
+        List<UsuarioGusto> result  = null;
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            //Checar que amigos este bien si no cambiarlo por conocer.
+            String hql = "From UsuarioGusto where id_gusto = :id_gusto";
+            Query query = session.createQuery(hql);
+            query.setParameter("id_gusto", id_gusto);
+            result = (List<UsuarioGusto>)query.list();
+            tx.commit();
+        }
+        catch (Exception e){
+            if(tx != null){
+                tx.rollback();
+            }
+            e.printStackTrace();
+        }
+        finally{
+            session.close();
+        }
+        return result;
+    }
+      
+       public List<Usuario> getUsuarios(int id_usuario) {
+        //Creamos una variable donde vamos a guardar el usuario solicitado
+        List<Usuario> salida = null;
+        //Se inicia la sesión
+        Session session = sessionFactory.openSession();
+        //...la transacción a realizar
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            /* Después del from nos referimos a la clase y nickname es el atributo de la clase */
+            String hql = "FROM Usuario WHERE id_usuario = :id_usuario"; //inyectamos nickname en c
+            Query query = session.createQuery(hql);
+            query.setParameter("id_usuario", id_usuario);
+            salida = (List<Usuario>)query.list();
+            tx.commit();
+        } catch (Exception e) {
+            //Se regresa a un estado consistente 
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            //cerramos simpre la sesion
+            session.close();
+        }
+        return salida;
     }
 
 }

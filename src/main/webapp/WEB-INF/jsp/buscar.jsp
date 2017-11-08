@@ -45,7 +45,7 @@
                         <button type="button" class="btn btn-outline-primary espaciado">Salir</button> <br>
                     </div>
                     <div class ="col-8 ">
-                        <div class="container-fluid bordeChat">
+                        <div class="container-fluid bordeChat" style="overflow: scroll">
                             
                             <header class="headerchat bordebot">
                                 
@@ -59,8 +59,26 @@
                                     
                                                                   
                                 <div class =" col-8">
-                                    <div class="container-fluid">
-                                        Lista de coincidencias
+                                    <div class="container-fluid">                                        
+                                       <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    
+                                                    <th>Nickname</th>
+                                                    <th>Nombre</th>
+                                                    <th>Correo</th>
+                                                </tr>
+                                            </thead>
+                                            <c:forEach var="m" items="${coincidencias2}">
+                                                <tbody>                                                   
+                                                    <th>${m.nickname}</th> 
+                                                    <th>${m.nombre}</th>
+                                                    <th>${m.correo}</th>
+                                               </tbody>
+
+                                            </c:forEach>
+                                        </table>
+                                        
                                     </div>
                                 </div>
                                     

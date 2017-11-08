@@ -25,6 +25,8 @@
             <list>
                 <value>com.tentacruel.dahood.mapeobd.Amigos</value>
                 <value>com.tentacruel.dahood.mapeobd.Gusto</value>
+                <value>com.tentacruel.dahood.mapeobd.UsuarioGusto</value>
+                <value>com.tentacruel.dahood.mapeobd.Usuario</value>                                
             </list>
         </property>
         <property name="hibernateProperties">
@@ -40,5 +42,7 @@
           en el paquete controlador, se esta haciendo uso de @Autowired-->
     <!--Ejemplo para configurar bean-->
     
-    <bean id="ChatDAO" class="com.tentacruel.dahood.modelo.GustoDAO" p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"/>
+    <bean id="GustoDAO" class="com.tentacruel.dahood.modelo.GustoDAO" p:sessionFactory-ref="hibernate4AnnotatedSessionFactory"/>
+    
+    
 </beans>

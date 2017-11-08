@@ -5,6 +5,7 @@
  */
 package com.tentacruel.dahood.mapeobd;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Column;
@@ -18,11 +19,12 @@ import javax.persistence.Id;
  */
 @Entity
 @Table(name = "usuario")
-public class Usuario {
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Usuario implements Serializable {
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     @Column(name = "id_usuario")
     private int id_usuario;
-           
+    @Id
     @Column(name = "nickname")
     private String nickname;
             

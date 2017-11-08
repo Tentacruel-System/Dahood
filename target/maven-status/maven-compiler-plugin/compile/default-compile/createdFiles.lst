@@ -1,1 +1,8 @@
+com/tentacruel/dahood/controlador/ControladorGusto.class
+com/tentacruel/dahood/mapeobd/Gusto.class
+com/tentacruel/dahood/mapeobd/Usuario.class
 com/tentacruel/dahood/controlador/Controlador.class
+com/tentacruel/dahood/mapeobd/Amigos.class
+com/tentacruel/dahood/modelo/UsuarioDAO.class
+com/tentacruel/dahood/mapeobd/UsuarioGusto.class
+com/tentacruel/dahood/modelo/GustoDAO.class

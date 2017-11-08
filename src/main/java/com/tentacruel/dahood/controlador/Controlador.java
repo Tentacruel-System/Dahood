@@ -22,7 +22,7 @@ public class Controlador {
     public String dahood(ModelMap model){
           
         
-        return"buscar";
+        return "redirect:/buscar";
     
     }
     
