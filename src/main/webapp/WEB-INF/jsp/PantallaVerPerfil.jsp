@@ -74,7 +74,7 @@
                             <h2>${correo} </h2>
                         </aside>
                         <form:form method="GET" action = "/Dahood/principal/eliminarPerfil" id = "eliminarPerfil" ></form:form>
-                        <form:form method="GET" action = "/Dahood/principal/editarPerfil" id = "editarperfil"></form:form>
+                        <form:form method="GET" action = "/Dahood/principal/editarPerfil"developer id = "editarperfil"></form:form>
                         <p class="lead">
                             <input type="submit" class="btn btn-primary btn-lg" form="eliminarPerfil" value ="Eliminar Perfil"/>
                             <input type="submit" class="btn btn-primary btn-lg" form ="editarperfil" value="Editar Perfil"/>

@@ -88,9 +88,9 @@
 
                                         <p><label for="apellido_m">Apellido materno:</label>
                                             <input name="apellido_m" type="text" placeholder="...escribe apellido materno" /></p>
-
+developer
                                         <p><label for="correo">Correo:</label>
-                                            <input name="correo" type="text" placeholder="...escribe tu correo" /></p>
+                                            <input name="correo" type="text" placeholder="...escribe tu correo"/></p>
 
                                         <p><label for="foto">Foto:</label>
                                             <input name="foto" type="text" placeholder="...cambia tu foto de perfil" /></p>

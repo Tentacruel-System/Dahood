@@ -16,7 +16,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
         <script src="/Dahood/js/stomp.js"></script>
 
-            <!--<link  type="text/javascript" href="<c:url value="/js/stomp.js"/> ">-->
+        
         <script type="text/javascript">
             var stompClient = null;
           
@@ -29,7 +29,7 @@
             }
              
             function connect() {
-                var socket = new SockJS('/Dahood/chat');
+                var socket = new SockJS('/Dahood/principal/chat');
                  socket.onopen = function() {
                     console.log('open');
                     sock.send('test');
@@ -71,7 +71,7 @@
                 var from = document.getElementById('from').value;
                 var text = document.getElementById('text').value;
                 console.log('Soy un console log:',from, text)
-                stompClient.send("/app/chat", {}, text,from);
+                stompClient.send("/app/principal/chat", {}, text,from);
             }
              
             function showMessageOutput(messageOutput) {
@@ -85,11 +85,11 @@
         </script>
     </head>
     <body onload="disconnect()">
-        <div class="container-fluid principal">
+       <div class="container-fluid principal">
             <header>
                 <ul class="nav nav-pills nav-justified">
                     <li class="nav-item">
-                         <form:form method="GET" action = "/Dahood/principal/verPerfil" 
+                        <form:form method="GET" action = "/Dahood/principal/verPerfil" 
                                    id = "verperfil">
                         </form:form>
                         <input 
@@ -98,6 +98,7 @@
                             value="Ver Perfil"
                             type="submit">
                     </li>
+                    
                     <li class="nav-item">
                         <form:form method="GET" action = "/Dahood/principal/chat" 
                                    id = "chat">
@@ -130,7 +131,6 @@
                     </li>
                 </ul>
             </header>
-        <div>
             <div>
                 <input type="text" id="from" placeholder="Choose a nickname"/>
             </div>
@@ -147,7 +147,6 @@
                 <button id="sendMessage" onclick="sendMessage();">Send</button>
                 <p id="response"></p>
             </div>
-        </div>
-    </div>           
+        </div>          
     </body>
 </html>
