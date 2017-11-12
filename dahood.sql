@@ -102,7 +102,7 @@ DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario` (
-  `id_usuario` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `contrasena` varchar(40) NOT NULL,
   `foto` varchar(100) NOT NULL,
   `nombre` varchar(40) NOT NULL,
@@ -158,5 +158,27 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+
+--Creacion de gustos en la base de datos
+
+--Musica
+INSERT INTO gusto (id_gusto, nombre_gusto) VALUES ('1', 'rock');
+INSERT INTO gusto (id_gusto, nombre_gusto) VALUES ('2', 'jazz');
+INSERT INTO gusto (id_gusto, nombre_gusto) VALUES ('3', 'pop');
+--peliculas
+INSERT INTO gusto (id_gusto, nombre_gusto) VALUES ('4', 'drama');
+INSERT INTO gusto (id_gusto, nombre_gusto) VALUES ('5', 'accion');
+INSERT INTO gusto (id_gusto, nombre_gusto) VALUES ('6', 'terror');
+--deportes
+INSERT INTO gusto (id_gusto, nombre_gusto) VALUES ('7', 'futbol');
+INSERT INTO gusto (id_gusto, nombre_gusto) VALUES ('8', 'beisbol');
+INSERT INTO gusto (id_gusto, nombre_gusto) VALUES ('9', 'basquetbol');
+--comida
+INSERT INTO gusto (id_gusto, nombre_gusto) VALUES ('10', 'tacos');
+INSERT INTO gusto (id_gusto, nombre_gusto) VALUES ('11', 'enchiladas');
+INSERT INTO gusto (id_gusto, nombre_gusto) VALUES ('12', 'pizza');
+INSERT INTO gusto (id_gusto, nombre_gusto) VALUES ('13', 'hamburguesas');
+
 
 -- Dump completed on 2017-10-26 22:50:56
