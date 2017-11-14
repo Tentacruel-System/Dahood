@@ -87,13 +87,19 @@
                                                     <th>Nickname</th>
                                                     <th>Nombre</th>
                                                     <th>Correo</th>
+                                                    <th>Compatibilidad</th>
+                                                    <th>Gustos</th>
                                                 </tr>
                                             </thead>
                                             <c:forEach var="pareja" items="${usuarios}">
                                                 <tbody>                                                   
-                                                    <th>${pareja.u.nickname}</th> 
-                                                    <th>${pareja.compatibilidad}</th>
-                                                    <th>${pareja.u.correo}</th>
+                                                    <th>${pareja.usuario.nickname}</th>
+                                                    <th>${pareja.usuario.nombre}</th>
+                                                    <th>${pareja.usuario.correo}</th>
+                                                    <th>${pareja.compatibilidad * 100}</th>
+                                                    <c:forEach var="gusto" items="${pareja.usuario.gustos}">
+                                                        <th>${gusto.nombre_gusto}</th>
+                                                    </c:forEach>
                                                </tbody>
 
                                             </c:forEach>

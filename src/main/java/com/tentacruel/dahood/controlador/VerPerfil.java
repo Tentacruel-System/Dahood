@@ -16,7 +16,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
+import com.tentacruel.dahood.mapeobd.Gusto;
+import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
 /**
  *
  * @author jesus
@@ -34,9 +37,12 @@ public class VerPerfil {
         String nombre = user.getNombre() + " " + user.getApellidoPaterno() + " " + user.getApellidoMaterno();
         String nickname = user.getNickname();
         String correo= user.getCorreo();
+        Set<Gusto> conjuntoGustos = user.getGustos(); 
+        List<Gusto> gustos = new LinkedList<>(conjuntoGustos);
         model.addAttribute("nombre", nombre);
         model.addAttribute("nickname", nickname);
         model.addAttribute("correo", correo);
+        model.addAttribute("gustos", gustos);
         
         return new ModelAndView("PantallaVerPerfil",model);
     }

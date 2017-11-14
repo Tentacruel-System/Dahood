@@ -7,6 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -66,15 +68,36 @@
             
             <div class ="container-fluid">
                 <div class = "row">
-                    
+                    <c:set var="numGustos" value="${gustos.size()}"  scope="session" />
+                    <c:set var="gustosBD" value="${gustos}" scope="session"/>   
                     <div class ="col-10 style" style = "padding-top: 1px">
                         <aside>
                             <h1> ${nombre}</h1>
                             <h2>${nickname} </h2>
                             <h2>${correo} </h2>
+                            <table>
+                                <c:forEach begin="0" end="${Math.round((numGustos/6) - 1)}" var="i">
+                                   <tr>
+                                   <c:forEach begin="0" end = "5" var = "j">
+                                       <td>
+                                           <c:out value= "${gustosBD[i*6+j].nombre_gusto}"/>
+                                       </td>
+                                   </c:forEach>
+                                   </tr>
+                                </c:forEach>
+                                <c:if test= "${numGustos % 6} > 0}">
+                                    <tr>   
+                                        <c:forEach begin="0" end="${(numGustos % 6) - 1}" var="k">
+                                            <td>
+                                                <c:out value= "${gustosBD[Math.round(numGustos / 6) * 6 + k].nombre_gusto}"/>
+                                            </td>
+                                        </c:forEach>
+                                    </tr>
+                                </c:if>
+                            </table>
                         </aside>
                         <form:form method="GET" action = "/Dahood/principal/eliminarPerfil" id = "eliminarPerfil" ></form:form>
-                        <form:form method="GET" action = "/Dahood/principal/editarPerfil"developer id = "editarperfil"></form:form>
+                        <form:form method="GET" action = "/Dahood/principal/editarPerfil" id = "editarperfil"></form:form>
                         <p class="lead">
                             <input type="submit" class="btn btn-primary btn-lg" form="eliminarPerfil" value ="Eliminar Perfil"/>
                             <input type="submit" class="btn btn-primary btn-lg" form ="editarperfil" value="Editar Perfil"/>

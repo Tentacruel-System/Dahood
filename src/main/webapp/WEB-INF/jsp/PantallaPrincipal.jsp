@@ -41,7 +41,7 @@
                             type="submit">
                     </li>
                     <li class="nav-item">
-                        <form:form method="GET" action = "/Dahood/principal/Buscar" 
+                        <form:form method="GET" action = "/Dahood/principal/buscar" 
                                    id = "buscar">
                         </form:form>
                         <input 

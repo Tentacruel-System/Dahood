@@ -10,6 +10,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.SQLQuery;
+import org.hibernate.HibernateException;
+import java.util.List;
 
 /**
  *
@@ -142,6 +145,31 @@ public class GustoDAO {
             session.close();
         }
     }
-        
-
+    
+    /**
+     * Regresa la lista de los gustos
+     * @return lista de gustos guardados
+     */
+    public List<Gusto> getGustos(){
+        List<Gusto> gustos = null;
+        Session session = sessionFactory.openSession();
+        Transaction tx =  null;
+        try{
+            tx = session.beginTransaction();
+            String s = "SELECT * FROM gusto";
+            SQLQuery query = session.createSQLQuery(s);
+            query.addEntity(Gusto.class);
+            gustos = query.list();
+        }
+        catch(HibernateException e){
+            if(tx != null){
+                tx.rollback();
+            }
+            e.printStackTrace();
+        }
+        finally{
+            session.close();
+        }
+        return gustos;
+    }
 }

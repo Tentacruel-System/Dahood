@@ -42,19 +42,19 @@ public class Buscar {
         UserDetails usuario = (UserDetails) authentication.getPrincipal();
         String usuarioLoggeado = usuario.getUsername();
         Usuario user = usuario_db.getUsuario(usuarioLoggeado);
-        //Obtenemos el conjunto de gustos del usuario
-        Set<Gusto> gustos = user.getGustos();
-        //Creamos un iterador del conjunto de gustos
-        Iterator<Gusto> primerIteradorGusto = gustos.iterator();
+        //Obtenemos el conjunto de gustosDeUsuarioActual del usuario
+        Set<Gusto> gustosDeUsuarioActual = user.getGustos();
+        //Creamos un iterador del conjunto de gustosDeUsuarioActual
+        Iterator<Gusto> primerIteradorGusto = gustosDeUsuarioActual.iterator();
         //Obtenemos el primer gusto de dicho conjunto
         Gusto primerGusto = primerIteradorGusto.next();
         //Copiamos el conjunto de usuarios del primer gusto del usuario autenticado
         //Usamos este conjunto como base para la unión de todos los conjuntos de usuarios
-        //de los gustos que tiene el usuario autenticado.
+        //de los gustosDeUsuarioActual que tiene el usuario autenticado.
         //Esto se hace porque al unir dos conjuntos, el conjunto que llamó a la función
         //de unión se modifica para convertirse en la unión.
         Set<Usuario> unionUsuarios = new HashSet<>(primerGusto.getUsuarios());
-        //Unimos los conjuntos de usuarios de los demás gustos
+        //Unimos los conjuntos de usuarios de los demás gustosDeUsuarioActual
         while(primerIteradorGusto.hasNext()){
             Gusto gustoDeUsuario = primerIteradorGusto.next();
             unionUsuarios.addAll(gustoDeUsuario.getUsuarios());
@@ -62,18 +62,22 @@ public class Buscar {
         //Creamos un iterador para el conjunto de todos los usuarios con lo que 
         //el usuario autenticado comparte al menos un gusto.
         Iterator<Usuario> iteradorUsuario = unionUsuarios.iterator();
-        Iterator<Gusto> segundoIteradorGusto = gustos.iterator();
         List<Pair> usuarioCompatibilidad = new LinkedList<>();
-        double numeroGustos = gustos.size();
+        double numeroGustos = gustosDeUsuarioActual.size();
         while(iteradorUsuario.hasNext()){
             double compatibilidad;
             Usuario usuarioActual = iteradorUsuario.next();
+            System.out.println("Usuario con el que comparto un gusto " + usuarioActual.getNickname());
             int numeroDeCoincidencias = 0;
+            System.out.println("Son iguales?: " + usuarioActual.equals(user));
             if(!usuarioActual.equals(user)){
+                Iterator<Gusto> segundoIteradorGusto = gustosDeUsuarioActual.iterator();
                 while(segundoIteradorGusto.hasNext()){
                     Set<Usuario> usuariosDeGusto = segundoIteradorGusto.next().getUsuarios();
+                    System.out.println();
                     if(usuariosDeGusto.contains(usuarioActual)){
                         numeroDeCoincidencias++;
+                        System.out.println("Este es el número de veces en las que aparece " + numeroDeCoincidencias);
                     }
                 }
                 compatibilidad = numeroDeCoincidencias / numeroGustos;
@@ -85,17 +89,17 @@ public class Buscar {
         return new ModelAndView("PantallaBuscar", model);
     }
     
-    private class Pair implements Comparable<Pair>{
-        private final Usuario u;
+    public class Pair implements Comparable<Pair>{
+        private final Usuario usuario;
         private final double compatibilidad;
         
         public Pair(Usuario u, double compatibilidad){
-            this.u = u;
+            this.usuario = u;
             this.compatibilidad = compatibilidad;
         }
         
         public Usuario getUsuario(){
-            return this.u;
+            return this.usuario;
         }
         
         public double getCompatibilidad(){

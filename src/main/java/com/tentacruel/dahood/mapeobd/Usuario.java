@@ -15,6 +15,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import java.util.Set;
 import java.io.Serializable;
+import java.util.HashSet;
+import javax.persistence.FetchType;
 /**
  * Hacemos el mapeo de un elemento de la tabla usuario a un objeto Usuario
  * @author Leonardo Gallo
@@ -25,7 +27,7 @@ public class Usuario implements Serializable{
    
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
-    private int id_usuario;
+    private int idUsuario;
            
     @Column(name = "nickname")
     private String nickname;
@@ -34,10 +36,10 @@ public class Usuario implements Serializable{
     private String nombre;
     
     @Column(name = "apellido_p")
-    private String apellido_p;
+    private String apellidoPaterno;
 
     @Column(name = "apellido_m")
-    private String apellido_m;
+    private String apellidoMaterno;
 
     @Column(name = "contrasena")
     private String contrasena;
@@ -48,12 +50,12 @@ public class Usuario implements Serializable{
     @Column(name = "correo")
     private String correo;
     
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(
         name="usuario_gusto",
         joinColumns = {@JoinColumn(name="id_usuario")},
         inverseJoinColumns = {@JoinColumn(name="id_gusto")})
-    private Set<Gusto> gustos;
+    private Set<Gusto> gustos = new HashSet<>();
                 
     //parece que es la relación establecida con otras tablas
     //@OneToMany(mappedBy = "Usuario") //esto para qué?
@@ -61,10 +63,10 @@ public class Usuario implements Serializable{
 
     /**
      * Permite obtener el id del usuario
-     * @return  id_usuario
+     * @return  idUsuario
      */
     public int getIdUsuario() {
-        return id_usuario;
+        return idUsuario;
     }
 
     /**
@@ -72,7 +74,7 @@ public class Usuario implements Serializable{
      * @param   id_usuario
      */
     public void setIdUsuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+        this.idUsuario = id_usuario;
     }
     
     /**
@@ -109,10 +111,10 @@ public class Usuario implements Serializable{
 
     /**
      * Permite obtener el apellido paterno de usuario
-     * @return apellido_p
+     * @return apellidoPaterno
      */
     public String getApellidoPaterno() {
-        return apellido_p;
+        return apellidoPaterno;
     }
 
     /**
@@ -120,7 +122,7 @@ public class Usuario implements Serializable{
      * @param apellido_p 
      */
     public void setApellidoPaterno(String apellido_p) {
-        this.apellido_p = apellido_p;
+        this.apellidoPaterno = apellido_p;
     }
 
     /**
@@ -128,7 +130,7 @@ public class Usuario implements Serializable{
      * @return devuelve el apellido materno del usuario
      */
     public String getApellidoMaterno() {
-        return apellido_m;
+        return apellidoMaterno;
     }
 
     /**
@@ -136,7 +138,7 @@ public class Usuario implements Serializable{
      * @param apellido_m 
      */
     public void setApellidoMaterno(String apellido_m) {
-        this.apellido_m = apellido_m;
+        this.apellidoMaterno = apellido_m;
     }
 
     /**

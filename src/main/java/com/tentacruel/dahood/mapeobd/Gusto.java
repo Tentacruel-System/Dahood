@@ -13,13 +13,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Set;
 import javax.persistence.ManyToMany;
+import java.io.Serializable;
+import java.util.HashSet;
+import javax.persistence.FetchType;
 /**
  *
  * @author david
  */
 @Entity
 @Table(name = "gusto")
-public class Gusto {
+public class Gusto implements Serializable {
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_gusto")
     private int id_gusto;
@@ -27,8 +30,8 @@ public class Gusto {
     @Column(name = "nombre_gusto")
     private String nombre_gusto;
     
-    @ManyToMany(mappedBy = "gustos")
-    private Set<Usuario> usuarios;
+    @ManyToMany(mappedBy = "gustos", fetch=FetchType.EAGER)
+    private Set<Usuario> usuarios = new HashSet<>();
 
     public int getId_gusto() {
         return id_gusto;
