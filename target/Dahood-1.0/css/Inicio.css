@@ -15,7 +15,11 @@ and open the template in the editor.
     background-color: transparent;
 }
 
-.display-1{
+.lol{
+    background-color: black;
+}
+
+.display-3{
     
     text-align: center;
 }
@@ -31,37 +35,21 @@ and open the template in the editor.
 
 #grad2 {
     
-    background: linear-gradient(#bfe9ff,#ff6e7f); /* Standard syntax (must be last) */
+    background: linear-gradient(#bfe9ff,#ff6e7f);
 }
 
 
-.navbar, .navbar-light, .bg-faded, .nav{
-    background-color: #686E71;
-    
-}
 
 .footer{
     background-color: #686E71
 }
 
-.principal{
-    padding-top: 1px; 
-    padding-bottom: 4px;
-    background-color: #EEF3F6;
-    padding-left: 0%;
-    padding-right: 0%
-}
 
 
 
 
 
-.bordeChat{
-    width: 500px;
-    height: 200px;
-    border-style: solid;
-    border-color:gray;
-}
+
 
 .bordebot{
     border-bottom: 2px solid rgba(0,0,0,.10);

@@ -13,13 +13,15 @@
 <head>
     <title>Start Page</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/Inicio.css"/> ">
-<nav class="navbar navbar-light bg-faded">
-    <a class="navbar-brand" href="#">
-        <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-        Dahood
-    </a>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" integrity="sha384-1L94saFXWAvEw88RkpRz8r28eQMvt7kG9ux3DdCqya/P3CfLNtgqzMnyaUa49Pl2" crossorigin="anonymous">    <link rel="stylesheet" type="text/css" href="<c:url value="/css/Inicio.css"/> ">
+<nav class="navbar navbar-expand-lg navbar-dark lol">
+    <a class="navbar-brand" href="/Dahood">Dahood</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    
 </nav>
 </head>
 <body id ="grad2" >
@@ -30,9 +32,9 @@
                id = "crearperfil">
     </form:form>
     <div class = "container-fluid">
-        <div class="jumbotron transparente" >
-            <h1 class="display-1">Dahood</h1>
-            <p class="lead">La red social para los nuevos amigos.   </p>
+        <div class="jumbotron" >
+            <h1 class="display-3">Dahood</h1>
+            <p style = "text-align: center;">La red social para los nuevos amigos.   </p>
             <hr class="my-4">
             
             <p class="lead">
@@ -48,6 +50,9 @@
                     value="Crear Perfil"/>
             </p>
         </div>
+        
+        
+        
     </div>
     <div class = "container-fluid">
         
@@ -76,14 +81,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    
-    <footer class ="footer">    
-        <div class="container-fluid">
-            Tentacruel
-            
-        </div>
-    </footer>
-    
+    </div> 
 </body>
 
