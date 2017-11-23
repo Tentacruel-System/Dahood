@@ -60,6 +60,7 @@ public class Chatear {
     public Chat send(String  usuario, String texto) throws Exception {
         String time = new SimpleDateFormat("HH:mm").format(new Date());
         System.out.println(usuario);
+       
         return new Chat(1, texto, time);
     }
     

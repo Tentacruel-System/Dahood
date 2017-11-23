@@ -13,6 +13,7 @@
     <head>  
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="<c:url value="/css/Inicio.css"/> ">
         <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" integrity="sha384-1L94saFXWAvEw88RkpRz8r28eQMvt7kG9ux3DdCqya/P3CfLNtgqzMnyaUa49Pl2" crossorigin="anonymous">
         <title>JSP Page</title>
         
@@ -29,33 +30,29 @@
                     <a class="nav-link" href="/Dahood/iniciarsesion">Iniciar Sesion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Dahood/vistaCrearPerfil">Registrar</a>
+                    <a class="nav-link" href="/Dahood/crearPerfil">Registrar</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
+                
             </ul>
             
         </div>
     </nav>
 </head>
-<body>
-    <h1>Iniciar Sesión</h1>
-    <form:form method="POST" action = "/Dahood/iniciarsesion" >
-        <table>
-            <tr>
-                <td>User:</td>
-                <td><input type='text' name='usuario' value=''></td>
-            </tr>
-            <tr>
-                <td>Password:</td>
-                <td><input type='password' name='contrasena'/></td>
-            </tr>
-            <tr>
-                <td colspan='2'> 
-                    <input name="submit" type="submit" value="Iniciar Sesión"/>
-                </td>
-            </tr>
-        </table>
-    </form:form>
+<body class ="body2">
+    <div class="login">
+        <h1>Iniciar Sesión</h1>
+        <form:form method="POST" action = "/Dahood/iniciarsesion" >
+            
+            <form>
+                
+                <p>User</p>
+                <input type='text' name='usuario' value='' placeholder = "Nombre de usuario">  
+                <p>Password</p>
+                <input type='password' name='contrasena' placeholder = "Contraseña"/>
+                <input name="submit" type="submit" value="Iniciar Sesión"/>    
+            </form>
+        </form:form>
+    </div>
+</body>
 </html>
+
