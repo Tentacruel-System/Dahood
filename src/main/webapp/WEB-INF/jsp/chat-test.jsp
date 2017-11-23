@@ -79,7 +79,7 @@
                 var response = document.getElementById('response');
                 var p = document.createElement('p');
                 p.style.wordWrap = 'break-word';
-                p.appendChild(document.createTextNode(messageOutput.id_usuario1 + ": " 
+                p.appendChild(document.createTextNode(messageOutput.nombre + ": " 
                   + messageOutput.ruta + " (" + messageOutput.fecha + ")"));
                 response.appendChild(p);
             }

@@ -44,6 +44,9 @@ public class Chatear {
     
     @Autowired
     ChatDAO chat_db;
+    
+    @Autowired
+    UsuarioDAO usuario_db;
 
     
     @RequestMapping(value="/inicio", method = RequestMethod.GET)
@@ -61,10 +64,13 @@ public class Chatear {
 
     @MessageMapping("/principal/chat")
     @SendTo("/topic/messages")
-    public Chat send(String  usuario, String texto) throws Exception {
+    public Chat send( String texto, Authentication aunthentication) throws Exception {
         String time = new SimpleDateFormat("HH:mm").format(new Date());
-        System.out.println(usuario);
-        return new Chat(1, texto, time);
+       
+        UserDetails usuario = (UserDetails) aunthentication.getPrincipal();
+        String usuarioLoggeado = usuario.getUsername();
+        Usuario user = usuario_db.getUsuario(usuarioLoggeado);
+        return new Chat(user.getNickname(),texto, time);
     }
     
     @RequestMapping(value="/", method = RequestMethod.GET)
@@ -74,16 +80,7 @@ public class Chatear {
         return"inicio";
     
     }
-    
-    /** @RequestMapping(value="/principal/chat", method = RequestMethod.GET)
-    public String dahood1(ModelMap model){
-          
-        
-        return"chat-test";
-    
-    }*/
-    @Autowired
-    UsuarioDAO usuario_db;
+
     
     @RequestMapping(value = "/principal/chat", method = RequestMethod.GET)
     public ModelAndView chatear(HttpServletRequest request, ModelMap model, Authentication aunthentication){

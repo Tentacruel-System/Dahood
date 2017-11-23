@@ -12,10 +12,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SecondaryTable;
+import javax.persistence.SecondaryTables;
 import javax.persistence.Table;
 
 @ Entity
 @ Table(name = "chat")
+     /**@SecondaryTable(name ="usuario",pkJoinColumns ={ 
+        @PrimaryKeyJoinColumn(name = "id_usuario",referencedColumnName = "id_usuario1")})
+    */
 /**
  *
  * @author orlando
@@ -32,16 +38,15 @@ public class Chat {
     private String  fecha;
     @Column(name = "ruta")
     private String ruta;
+    
+    private String nombre;
    
 
-    public Chat( int usuario1, String texto, String fecha){
+    public Chat( String nombre, String texto, String fecha){
         
         this.ruta = texto;
-        this.id_usuario1 = usuario1;
-        this.fecha = fecha;
-
-        
-        
+        this.nombre = nombre;
+        this.fecha = fecha;    
     }
     
     public int getId_chat() {
@@ -84,8 +89,12 @@ public class Chat {
         this.ruta = ruta;
     }
 
-    
+    public String getNombre() {
+        return nombre;
+    }
 
-    
-    
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
 }
