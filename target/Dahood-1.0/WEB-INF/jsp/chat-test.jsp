@@ -1,11 +1,12 @@
 <%-- 
     Document   : chat-test
     Created on : 30/10/2017, 01:19:40 PM
-    Author     : maw
+    Author     : maw & orlando
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -131,15 +132,22 @@
                     </li>
                 </ul>
             </header>
+           <h1> ${nickname}</h1>
+                    
+               
             <div>
                 <input type="text" id="from" placeholder="Choose a nickname"/>
             </div>
             <br />
             <div>
-                <button id="connect" onclick="connect();">Connect</button>
+                <button id="connect" onclick="connect();">
+                    Connect
+                </button>
+                
                 <button id="disconnect" disabled="disabled" onclick="disconnect();">
                     Disconnect
                 </button>
+                    
             </div>
             <br />
             <div id="conversationDiv">

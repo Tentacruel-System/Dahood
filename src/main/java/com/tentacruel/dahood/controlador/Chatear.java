@@ -8,7 +8,9 @@ package com.tentacruel.dahood.controlador;
 import com.tentacruel.dahood.mapeobd.Chat;
 import com.tentacruel.dahood.modelo.ChatDAO;
 import com.tentacruel.dahood.mapeobd.Amigos;
+import com.tentacruel.dahood.mapeobd.Usuario;
 import com.tentacruel.dahood.modelo.Mensaje;
+import com.tentacruel.dahood.modelo.UsuarioDAO;
 
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,8 @@ import org.springframework.stereotype.Controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 
 
 
@@ -71,12 +75,33 @@ public class Chatear {
     
     }
     
-     @RequestMapping(value="/principal/chat", method = RequestMethod.GET)
+    /** @RequestMapping(value="/principal/chat", method = RequestMethod.GET)
     public String dahood1(ModelMap model){
           
         
         return"chat-test";
     
+    }*/
+    @Autowired
+    UsuarioDAO usuario_db;
+    
+    @RequestMapping(value = "/principal/chat", method = RequestMethod.GET)
+    public ModelAndView chatear(HttpServletRequest request, ModelMap model, Authentication aunthentication){
+        UserDetails usuario = (UserDetails) aunthentication.getPrincipal();
+        String usuarioLoggeado = usuario.getUsername();
+        Usuario user = usuario_db.getUsuario(usuarioLoggeado);
+        
+        
+        String nickname = user.getNickname();
+        String nombre = user.getNombre() + " " + user.getApellidoPaterno();
+        String correo = user.getCorreo();
+        
+        model.addAttribute("nombre", nombre);
+        model.addAttribute("nickname", nickname);
+        model.addAttribute("correo", correo);
+        
+        return new ModelAndView("chat-test", model);
+        
     }
     
 }
