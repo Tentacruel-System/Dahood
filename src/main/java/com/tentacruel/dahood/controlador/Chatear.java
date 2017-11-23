@@ -9,7 +9,6 @@ import com.tentacruel.dahood.mapeobd.Chat;
 import com.tentacruel.dahood.modelo.ChatDAO;
 import com.tentacruel.dahood.mapeobd.Amigos;
 import com.tentacruel.dahood.mapeobd.Usuario;
-import com.tentacruel.dahood.modelo.Mensaje;
 import com.tentacruel.dahood.modelo.UsuarioDAO;
 
 import javax.servlet.http.HttpServletRequest;
@@ -72,15 +71,8 @@ public class Chatear {
         Usuario user = usuario_db.getUsuario(usuarioLoggeado);
         return new Chat(user.getNickname(),texto, time);
     }
+   
     
-    @RequestMapping(value="/", method = RequestMethod.GET)
-    public String dahood(ModelMap model){
-          
-        
-        return"inicio";
-    
-    }
-
     
     @RequestMapping(value = "/principal/chat", method = RequestMethod.GET)
     public ModelAndView chatear(HttpServletRequest request, ModelMap model, Authentication aunthentication){
