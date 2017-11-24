@@ -1,4 +1,4 @@
-<%-- 
+    <%-- 
     Document   : PantallaPrincipal
     Created on : Nov 6, 2017, 12:29:00 PM
     Author     : Leonardo
@@ -68,12 +68,12 @@
             
             <div class ="container-fluid">
                 <div class = "row">
-                    <c:set var="numGustos" value="${gustos.size()}"  scope="session" />
+                    <c:set var="numGustos" value="${gustos.size()}"  scope="session" /> 
                     <c:set var="gustosBD" value="${gustos}" scope="session"/>   
                     <div class ="col-10 style" style = "padding-top: 1px">
                         <aside>
-                            <h1> ${nombre}</h1>
-                            <h2>${nickname} </h2>
+                            <h1>${nombre}</h1>
+                            <h2>${nickname}</h2>
                             <h2>${correo} </h2>
                             <table>
                                 <c:forEach begin="0" end="${Math.round((numGustos/6) - 1)}" var="i">

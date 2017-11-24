@@ -46,4 +46,8 @@ public class VerPerfil {
         
         return new ModelAndView("PantallaVerPerfil",model);
     }
-}
+    
+    
+        
+     
+}   

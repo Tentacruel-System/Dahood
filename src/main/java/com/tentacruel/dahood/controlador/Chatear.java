@@ -8,7 +8,8 @@ package com.tentacruel.dahood.controlador;
 import com.tentacruel.dahood.mapeobd.Chat;
 import com.tentacruel.dahood.modelo.ChatDAO;
 import com.tentacruel.dahood.mapeobd.Amigos;
-import com.tentacruel.dahood.modelo.Mensaje;
+import com.tentacruel.dahood.mapeobd.Usuario;
+import com.tentacruel.dahood.modelo.UsuarioDAO;
 
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ import org.springframework.stereotype.Controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 
 
 
@@ -40,6 +43,9 @@ public class Chatear {
     
     @Autowired
     ChatDAO chat_db;
+    
+    @Autowired
+    UsuarioDAO usuario_db;
 
     
     @RequestMapping(value="/inicio", method = RequestMethod.GET)
@@ -57,11 +63,13 @@ public class Chatear {
 
     @MessageMapping("/principal/chat")
     @SendTo("/topic/messages")
-    public Chat send(String  usuario, String texto) throws Exception {
+    public Chat send( String texto, Authentication aunthentication) throws Exception {
         String time = new SimpleDateFormat("HH:mm").format(new Date());
-        System.out.println(usuario);
        
-        return new Chat(1, texto, time);
+        UserDetails usuario = (UserDetails) aunthentication.getPrincipal();
+        String usuarioLoggeado = usuario.getUsername();
+        Usuario user = usuario_db.getUsuario(usuarioLoggeado);
+        return new Chat(user.getNickname(),texto, time);
     }
     
     @RequestMapping(value="/", method = RequestMethod.GET)
@@ -71,13 +79,25 @@ public class Chatear {
         return"inicio";
     
     }
+
     
-     @RequestMapping(value="/principal/chat", method = RequestMethod.GET)
-    public String dahood1(ModelMap model){
-          
+    @RequestMapping(value = "/principal/chat", method = RequestMethod.GET)
+    public ModelAndView chatear(HttpServletRequest request, ModelMap model, Authentication aunthentication){
+        UserDetails usuario = (UserDetails) aunthentication.getPrincipal();
+        String usuarioLoggeado = usuario.getUsername();
+        Usuario user = usuario_db.getUsuario(usuarioLoggeado);
         
-        return"chat-test";
-    
+        
+        String nickname = user.getNickname();
+        String nombre = user.getNombre() + " " + user.getApellidoPaterno();
+        String correo = user.getCorreo();
+        
+        model.addAttribute("nombre", nombre);
+        model.addAttribute("nickname", nickname);
+        model.addAttribute("correo", correo);
+        
+        return new ModelAndView("PantallaChat", model);
+        
     }
     
 }
