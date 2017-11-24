@@ -89,7 +89,7 @@ public class Chatear {
         model.addAttribute("nickname", nickname);
         model.addAttribute("correo", correo);
         
-        return new ModelAndView("chat-test", model);
+        return new ModelAndView("PantallaChat", model);
         
     }
     

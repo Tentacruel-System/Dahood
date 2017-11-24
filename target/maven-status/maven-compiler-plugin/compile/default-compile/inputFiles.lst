@@ -4,6 +4,7 @@
 /home/orlando/Documentos/Ingenieria/Dahood/src/main/java/com/tentacruel/dahood/controlador/EditarPerfil.java
 /home/orlando/Documentos/Ingenieria/Dahood/src/main/java/com/tentacruel/dahood/modelo/GustoDAO.java
 /home/orlando/Documentos/Ingenieria/Dahood/src/main/java/com/tentacruel/dahood/controlador/Chatear.java
+/home/orlando/Documentos/Ingenieria/Dahood/src/main/java/com/tentacruel/dahood/mapeobd/Mensaje.java
 /home/orlando/Documentos/Ingenieria/Dahood/src/main/java/com/tentacruel/dahood/modelo/UsuarioDAO.java
 /home/orlando/Documentos/Ingenieria/Dahood/src/main/java/com/tentacruel/dahood/controlador/EliminarPerfil.java
 /home/orlando/Documentos/Ingenieria/Dahood/src/main/java/com/tentacruel/dahood/mapeobd/Chat.java
@@ -12,5 +13,4 @@
 /home/orlando/Documentos/Ingenieria/Dahood/src/main/java/com/tentacruel/dahood/mapeobd/Amigos.java
 /home/orlando/Documentos/Ingenieria/Dahood/src/main/java/com/tentacruel/dahood/modelo/ChatDAO.java
 /home/orlando/Documentos/Ingenieria/Dahood/src/main/java/com/tentacruel/dahood/controlador/Buscar.java
-/home/orlando/Documentos/Ingenieria/Dahood/src/main/java/com/tentacruel/dahood/modelo/Mensaje.java
 /home/orlando/Documentos/Ingenieria/Dahood/src/main/java/com/tentacruel/dahood/controlador/IniciarSesion.java
