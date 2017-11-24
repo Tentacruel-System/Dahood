@@ -71,11 +71,11 @@ public class Chatear {
         Usuario user = usuario_db.getUsuario(usuarioLoggeado);
         return new Chat(user.getNickname(),texto, time);
     }
-    
+   
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String dahood(ModelMap model){
-          
-        
+    
+    
         return"inicio";
     
     }
