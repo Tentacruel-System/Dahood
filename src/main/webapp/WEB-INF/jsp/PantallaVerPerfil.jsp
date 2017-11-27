@@ -13,58 +13,38 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Ver perfil</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/Inicio.css"/> ">
-        <title>Principal</title>
+        <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+        <script src="/Dahood/js/stomp.js"></script>
+        
+    <nav class="navbar navbar-expand-lg navbar-dark" style = "background-color: black;">
+        <a class="navbar-brand" href="/Dahood">Dahood</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href = "/Dahood/principal/verPerfil">Ver perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href = "/Dahood/principal/chat">Chat</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href = "/Dahood/principal/buscar">Buscar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href = "/Dahood/principal/salir">Cerrar sesion</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     </head>
     <body>
         <div class="container-fluid principal">
-            <header>
-                <ul class="nav nav-pills nav-justified">
-                    <li class="nav-item">
-                        <form:form method="GET" action = "/Dahood/principal/verPerfil" 
-                                   id = "verperfil">
-                        </form:form>
-                        <input 
-                            class="btn btn-primary btn-lg" 
-                            form="verperfil"
-                            value="Ver Perfil"
-                            type="submit">
-                    </li>
-                    <li class="nav-item">
-                        <form:form method="GET" action = "/Dahood/principal/chat" 
-                                   id = "chat">
-                        </form:form>
-                        <input 
-                            class="btn btn-primary btn-lg" 
-                            form="chat"
-                            value="Chat"
-                            type="submit">
-                    </li>
-                    <li class="nav-item">
-                        <form:form method="GET" action = "/Dahood/principal/buscar" 
-                                   id = "buscar">
-                        </form:form>
-                        <input 
-                            class="btn btn-primary btn-lg" 
-                            form="buscar"
-                            value="Buscar"
-                            type="submit">
-                    </li>
-                    <li class="nav-item">
-                         <form:form method="GET" action = "/Dahood/principal/salir" 
-                                   id = "salir">
-                        </form:form>
-                        <input 
-                            class="btn btn-primary btn-lg" 
-                            form="salir"
-                            value="Salir"
-                            type="submit">
-                    </li>
-                </ul>
-            </header>
-            
             
             <div class ="container-fluid">
                 <div class = "row">

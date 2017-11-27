@@ -26,7 +26,7 @@ Author     : Leonardo
                 
                 <li class="nav-item active">
                     
-                    <a class="nav-link" href = "/Dahood/principal/verPerfil">Perfil</a>
+                    <a class="nav-link" href = "/Dahood/principal/verPerfil">Ver perfil</a>
                 </li>
                 <li class="nav-item">
                    

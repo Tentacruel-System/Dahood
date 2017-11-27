@@ -23,13 +23,13 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href = "/Dahood/principal/verperfil">Perfil</a>
+                    <a class="nav-link" href = "/Dahood/principal/verPerfil">Ver perfil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href = "/Dahood/principal/chat">Chat</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href = "/Dahood/principal/buscar">Buscar Amigos</a>
+                    <a class="nav-link" href = "/Dahood/principal/buscar">Buscar</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link " href = "/Dahood/principal/salir">Cerrar sesion</a>
