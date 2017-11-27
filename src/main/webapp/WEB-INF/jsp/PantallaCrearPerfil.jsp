@@ -22,19 +22,6 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="/Dahood/iniciarsesion">Iniciar Sesion</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/Dahood/crearPerfil">Registrar</a>
-                </li>
-                
-            </ul>
-            
-        </div>
     </nav>
 </head>
 <body class = "body2">
@@ -43,21 +30,14 @@
         <div class = "scroll2">
             
             <!-- action contiene la carpeta del proyecto y el nombre de la peticion -->
-            <form action="/Dahood/crearPerfil" method="post" >  
-                <p>Nombre:</p>
-                <input name="nombre" type="text" placeholder="...escribe tu nombre"/>
-                <p>Apellido paterno:</p>
-                <input name="apellido_p" type="text" placeholder="...escribe apellido paterno"/>
-                <p>Apellido materno:</p>
-                <input name="apellido_m" type="text" placeholder="...escribe apellido materno" />
-                <p>Nickname:</p>
-                <input name="nickname" type="text" placeholder="...elige un nickname" />
-                <p>Correo:</p>
-                <input name="correo" type="text" placeholder="...escribe tu correo" />
-                <p>Contraseña:</p>
-                <input name="contrasena" type="password" id="pass" class="pass" placeholder="...escribe tu contraseña"/>
-                <p>Confirmar Contraseña:</p>
-                <input name="confcontrasena" type="password" id="repass" class="repass" placeholder="escribe de nuevo tu contraseña"/>
+            <form action="/Dahood/crearPerfil" method="post" >
+                <input name="nombre" type="text" placeholder="Nombre"/>
+                <input name="apellido_p" type="text" placeholder="Apellido paterno"/>
+                <input name="apellido_m" type="text" placeholder="Apellido materno" />
+                <input name="nickname" type="text" placeholder="Nickname" />
+                <input name="correo" type="text" placeholder="Correo" />
+                <input name="contrasena" type="password" id="pass" class="pass" placeholder="Contraseña"/>
+                <input name="confcontrasena" type="password" id="repass" class="repass" placeholder="Confirmar contraseña"/>
         </div>
         <div class = "form-check scroll">
             <h3>Selecciona tus gustos</h3>
@@ -86,7 +66,8 @@
             </c:if>
         </div>
         <input name="submit" type="submit" id="boton" value="Aceptar" class="boton"/>
-    </form>
+        <input name="submit" type="button" id="boton" value="Cancelar" class="boton"/>
+        </form>
 </div><!-- fin contenedor -->
 
 
