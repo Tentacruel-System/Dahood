@@ -104,7 +104,6 @@ DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `contrasena` varchar(40) NOT NULL,
-  `foto` varchar(100) NOT NULL,
   `nombre` varchar(40) NOT NULL,
   `apellido_p` varchar(40) NOT NULL,
   `apellido_m` varchar(40) NOT NULL,
