@@ -75,7 +75,7 @@
     stompClient.connect({},function(frame){
         setConnected(true);
         stompClient.subscribe('/topic/messages', function(messageOutput){
-          var side = 'right'
+          var side = 'right';
           showMessageOutput(side,JSON.parse(messageOutput.body));
         });
     },function(error){
@@ -84,7 +84,7 @@
   }
 
   function disconnect() {
-    if(stompClient != null){
+    if(stompClient !==  null){
       stompClient.disconnect();
     }
     setConnected(false);
@@ -95,11 +95,11 @@
     //var response = document.getElementById('response');
     var $message;
     $message = $($('.message_template').clone().html());
-    $message.addClass("message left ").find('.text').html(messageOutput.ruta)
+    $message.addClass("message left ").find('.text').html(messageOutput.ruta);
     $('.messages').append($message);
     return setTimeout(function(){
       return $message.addClass('appeared');
-    },0)
+    },0);
   };
 
 
@@ -134,7 +134,7 @@
 
     $('.message_input').keyup(function (e){
       if(e.which === 13){
-        return sendMessage()
+        return sendMessage();
       }
     });
   });
