@@ -42,9 +42,7 @@
     <div class="login">
         <h1>Iniciar Sesión</h1>
         <form:form method="POST" action = "/Dahood/iniciarsesion" >
-            
             <form>
-                
                 <p>User</p>
                 <input type='text' name='usuario' value='' placeholder = "Nombre de usuario">  
                 <p>Password</p>

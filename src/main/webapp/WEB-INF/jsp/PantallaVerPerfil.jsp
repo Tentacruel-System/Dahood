@@ -76,7 +76,7 @@
                                 </c:if>
                             </table>
                         </aside>
-                        <form:form method="GET" action = "/Dahood/principal/eliminarPerfil" id = "eliminarPerfil" ></form:form>
+                        <form:form method="GET" action = "/Dahood/principal/confirmarEliminarPerfil" id = "eliminarPerfil" ></form:form>
                         <form:form method="GET" action = "/Dahood/principal/editarPerfil" id = "editarperfil"></form:form>
                         <p class="lead">
                             <input type="submit" class="btn btn-primary btn-lg" form="eliminarPerfil" value ="Eliminar Perfil"/>

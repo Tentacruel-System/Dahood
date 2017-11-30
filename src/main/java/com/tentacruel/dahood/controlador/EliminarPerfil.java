@@ -23,6 +23,10 @@ public class EliminarPerfil {
     @Autowired
     UsuarioDAO usuario_db;
     
+    @RequestMapping(value="/principal/confirmarEliminarPerfil", method = RequestMethod.GET)
+    public String confirmarEliminarPerfil(){
+        return "PantallaConfirmarEliminarPerfil";
+    }
     @RequestMapping(value="/principal/eliminarPerfil", method=RequestMethod.GET)
     public String eliminarPerfil(Authentication authentication){
         UserDetails usuario = (UserDetails) authentication.getPrincipal();
