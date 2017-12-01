@@ -152,6 +152,10 @@
             <h1 id = "from"> ${nickname}</h1>
             <ul class="nav nav-pills nav-stacked">
             <h5> Amigos </h5>
+            <c:forEach var= "usuario" items ="${amigos}">
+             <br
+             <h1>${usuario.amigo} </h1>
+            </c:forEach>
         </div>
     
             

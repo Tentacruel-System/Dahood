@@ -48,18 +48,21 @@ public class Chatear {
     UsuarioDAO usuario_db;
 
     
-    @RequestMapping(value="/inicio", method = RequestMethod.GET)
-    public ModelAndView amigos(ModelMap model){
+    /*@RequestMapping(value="/principal/chat", method = RequestMethod.GET)
+    public ModelAndView amigos(ModelMap model,Authentication aunthentication){
         
-        List<Amigos> friends = chat_db.getAmigos(1);
+        UserDetails usuario = (UserDetails) aunthentication.getPrincipal();
+        String usuarioLoggeado = usuario.getUsername();
+        Usuario user = usuario_db.getUsuario(usuarioLoggeado);
+        
+        List<Amigos> friends = chat_db.getAmigos(user.getIdUsuario());
+       
         
         model.addAttribute("amigos", friends);
-        System.out.println(friends);
-        
-        return new ModelAndView("Chatear",model);
+        return new ModelAndView("PantallaChat",model);
         
        
-    }
+    }*/
 
     @MessageMapping("/principal/chat")
     @SendTo("/topic/messages")
@@ -91,10 +94,14 @@ public class Chatear {
         String nickname = user.getNickname();
         String nombre = user.getNombre() + " " + user.getApellidoPaterno();
         String correo = user.getCorreo();
+        List<Amigos> friends = chat_db.getAmigos(user.getIdUsuario());
+       
         
+        model.addAttribute("amigos", friends); 
         model.addAttribute("nombre", nombre);
         model.addAttribute("nickname", nickname);
         model.addAttribute("correo", correo);
+        
         
         return new ModelAndView("PantallaChat", model);
         
