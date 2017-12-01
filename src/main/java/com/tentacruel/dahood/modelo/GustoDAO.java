@@ -172,6 +172,9 @@ public class GustoDAO {
         finally{
             session.close();
         }
+        for(Gusto lol: gustos){
+            System.out.println(lol.getNombre_gusto());
+        }
         return gustos;
     }
     

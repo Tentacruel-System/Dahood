@@ -28,9 +28,12 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -66,8 +69,8 @@ public class Chatear {
 
     @MessageMapping("/principal/chat")
     @SendTo("/topic/messages")
-    public Chat send( String texto, Authentication aunthentication) throws Exception {
-        String time = new SimpleDateFormat("HH:mm").format(new Date());
+    public Chat send( String texto, Authentication aunthentication, @RequestParam("param") String usr) throws Exception {
+        String time = new SimpleDateFormat("d MMM yyyy HH:mm").format(new Date());
        
         UserDetails usuario = (UserDetails) aunthentication.getPrincipal();
         String usuarioLoggeado = usuario.getUsername();
@@ -94,13 +97,27 @@ public class Chatear {
         String nickname = user.getNickname();
         String nombre = user.getNombre() + " " + user.getApellidoPaterno();
         String correo = user.getCorreo();
-        List<Amigos> friends = chat_db.getAmigos(user.getIdUsuario());
-       
         
+        
+        List<Amigos> friends = chat_db.getAmigos(user.getIdUsuario( ));
+        List<String> amaigos = new ArrayList<String>();
+        for (Amigos row: friends) {
+            System.out.println(" ------------------- ");
+            System.out.println("id: " + (usuario_db.getUsuarioByID(row.getAmigo())).getNickname());
+            System.out.println("Usuario: " + row.getUsuario());
+            System.out.println("Amigo: " + row.getAmigo());
+            amaigos.add(usuario_db.getUsuarioByID(row.getAmigo()).getNickname());
+            
+            
+        }
+        System.out.println(amaigos);
+        model.addAttribute("lel", amaigos);
         model.addAttribute("amigos", friends); 
         model.addAttribute("nombre", nombre);
         model.addAttribute("nickname", nickname);
         model.addAttribute("correo", correo);
+        
+        
         
         
         return new ModelAndView("PantallaChat", model);

@@ -16,7 +16,10 @@ import javax.persistence.JoinColumn;
 import java.util.Set;
 import java.io.Serializable;
 import java.util.HashSet;
+import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 /**
  * Hacemos el mapeo de un elemento de la tabla usuario a un objeto Usuario
  * @author Leonardo Gallo
@@ -56,11 +59,9 @@ public class Usuario implements Serializable{
         joinColumns = {@JoinColumn(name="id_usuario")},
         inverseJoinColumns = {@JoinColumn(name="id_gusto")})
     private Set<Gusto> gustos = new HashSet<>();
-                
-    //parece que es la relación establecida con otras tablas
-    //@OneToMany(mappedBy = "Usuario") //esto para qué?
-    //private Set<Marcador> marcadores; //es de la tabla o la base?
-
+    
+    
+    
     /**
      * Permite obtener el id del usuario
      * @return  idUsuario
@@ -69,6 +70,7 @@ public class Usuario implements Serializable{
         return idUsuario;
     }
 
+    
     /**
      * Permite cambiar el id del usuario
      * @param   id_usuario

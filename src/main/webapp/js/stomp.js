@@ -143,6 +143,7 @@
     Client.prototype.debug = function(message) {
       var _ref;
       return typeof window !== "undefined" && window !== null ? (_ref = window.console) != null ? _ref.log(message) : void 0 : void 0;
+      
     };
 
     now = function() {
@@ -283,6 +284,7 @@
             frame = _ref[_i];
             switch (frame.command) {
               case "CONNECTED":
+                  console.log(data);
                 if (typeof _this.debug === "function") {
                   _this.debug("connected to server " + frame.headers.server);
                 }

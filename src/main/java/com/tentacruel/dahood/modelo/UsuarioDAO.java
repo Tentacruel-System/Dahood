@@ -101,6 +101,34 @@ public class UsuarioDAO implements UserDetailsService {
         return salida;
     }
     
+    public Usuario getUsuarioByID(int id_usuario) {
+        //Creamos una variable donde vamos a guardar el usuario solicitado
+        Usuario salida = null;
+        //Se inicia la sesión
+        Session session = sessionFactory.openSession();
+        //...la transacción a realizar
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            /* Después del from nos referimos a la clase y nickname es el atributo de la clase */
+            String hql = "FROM Usuario WHERE id_usuario= :c"; //inyectamos nickname en c
+            Query query = session.createQuery(hql);
+            query.setParameter("c", id_usuario);
+            salida = (Usuario)query.uniqueResult();
+            tx.commit();
+        } catch (Exception e) {
+            //Se regresa a un estado consistente 
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            //cerramos simpre la sesion
+            session.close();
+        }
+        return salida;
+    }
+    
     /**
      * Elimina el usuario de la base de datos
      *
