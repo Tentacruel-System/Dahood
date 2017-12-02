@@ -62,7 +62,7 @@ public class CrearPerfil {
             newuser.setNickname(nickname);
             newuser.setCorreo(correo);
             newuser.setContrasena(contrasena);
-            newuser.setFoto("");
+            //newuser.setFoto("");
             while(it.hasNext()){
                 Gusto gustoExistente = it.next();
                 String nombreGusto = gustoExistente.getNombre_gusto();
@@ -83,7 +83,7 @@ public class CrearPerfil {
      */
     @RequestMapping(value="/crearPerfil", method = RequestMethod.GET)
     public ModelAndView vistaPerfil(ModelMap model){
-        List<Gusto> gustos = gusto_db.getGustos();
+        List<Gusto> gustos = gusto_db.getGustos(); 
         model.addAttribute("gustos",gustos);
         return new ModelAndView("PantallaCrearPerfil", model);
     }

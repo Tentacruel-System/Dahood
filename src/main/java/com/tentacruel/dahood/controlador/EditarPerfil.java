@@ -46,7 +46,7 @@ public class EditarPerfil {
         String apellido_m = request.getParameter("apellido_m");
         String correo = request.getParameter("correo");
         String contrasena = request.getParameter("contrasena");
-        String foto = request.getParameter("foto");
+        //String foto = request.getParameter("foto");
         
         //debe ser el nickname del usuario que esta en la sesion
         UserDetails usuario = (UserDetails) authentication.getPrincipal();
@@ -63,8 +63,8 @@ public class EditarPerfil {
             user.setCorreo(correo);
         if (!contrasena.isEmpty())
             user.setContrasena(contrasena);
-        if (!foto.isEmpty())
-            user.setFoto(foto);
+        //if (!foto.isEmpty())
+        //    user.setFoto(foto);
         //persistencia en la base de datos
         //se actualiza directo en la base de datos
         usuario_db.actualizar(user);

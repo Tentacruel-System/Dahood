@@ -5,6 +5,7 @@
  */
 package com.tentacruel.dahood.modelo;
 
+import com.tentacruel.dahood.mapeobd.Amigos;
 import com.tentacruel.dahood.mapeobd.Gusto;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -156,10 +157,11 @@ public class GustoDAO {
         Transaction tx =  null;
         try{
             tx = session.beginTransaction();
-            String s = "SELECT * FROM gusto";
-            SQLQuery query = session.createSQLQuery(s);
-            query.addEntity(Gusto.class);
-            gustos = query.list();
+            String s = "from Gusto";
+            Query query = session.createQuery(s);           
+            gustos = (List<Gusto>)query.list();
+            tx.commit();
+            
         }
         catch(HibernateException e){
             if(tx != null){
@@ -172,4 +174,34 @@ public class GustoDAO {
         }
         return gustos;
     }
+    
+    /**
+     * Guarda un usuario a la base de datos
+     *
+     * @param amigo el amigo a guardar.
+     */
+    public void guardarAmigo(Amigos amigo) {
+        //se inicia la sesion
+        Session session = sessionFactory.openSession();
+        //la transaccion a relizar
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            //guardamos el usuario
+            session.persist(amigo); //para guardar persist
+
+            tx.commit(); //para realizar la transaccion
+        } catch (Exception e) {
+            //Se regresa a un estado consistente 
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            //cerramos simpre la sesion
+            session.close();
+        }
+
+    }
+
 }

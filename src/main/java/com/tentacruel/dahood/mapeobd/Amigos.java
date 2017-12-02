@@ -5,6 +5,7 @@
  */
 package com.tentacruel.dahood.mapeobd;
 
+import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,10 +21,11 @@ import javax.persistence.Table;
  *
  * @author orlando
  */
-public class Amigos {
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Amigos implements Serializable{
+    @Id      
     @Column(name = "usuario")
     private int usuario;
+    @Id
     @Column(name = "amigo")
     private int amigo;
 

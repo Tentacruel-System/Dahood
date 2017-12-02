@@ -44,8 +44,8 @@ public class Usuario implements Serializable{
     @Column(name = "contrasena")
     private String contrasena;
     
-    @Column(name = "foto")
-    private String foto;
+    //@Column(name = "foto")
+    //private String foto;
 
     @Column(name = "correo")
     private String correo;
@@ -152,7 +152,7 @@ public class Usuario implements Serializable{
     /**
      * 
      * @return devuelve la ruta de la foto del perfil del usuario
-     */
+     *
     public String getFoto() {
         return foto;
     }
@@ -160,11 +160,11 @@ public class Usuario implements Serializable{
     /**
      * Permite cambiar la foto del perfil de usuario
      * @param foto 
-     */
+     *
     public void setFoto(String foto) {
         this.foto = foto;
     }
-
+**/
     /**
      * 
      * @return devuelve el correo del usuario
