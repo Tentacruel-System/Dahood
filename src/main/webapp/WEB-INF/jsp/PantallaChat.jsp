@@ -140,20 +140,12 @@
                 <div class="list-group">
                     <h5> Amigos </h5>
                     <a class="list-group-item list-group-item-action">
-                        <c:forEach var= "usuario" items ="${amaigos}">
+                        <c:forEach var= "usuario" items ="${lel}">
                             <h4 class="list-group-item-heading">${usuario}</h4>
-                            <p class="list-group-item-text">${usuario.amigo}</p>
+                            
                         </c:forEach>
                     </a>
                 </div>
-                
-                
-                <ul class="nav nav-pills nav-stacked">
-                    
-                    <c:forEach var= "usuario" items ="${amigos}">
-                        <br
-                            <h1>${usuario.amigo} </h1>
-                    </c:forEach>
             </div>
             
             

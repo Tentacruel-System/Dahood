@@ -100,19 +100,14 @@ public class Chatear {
         
         
         List<Amigos> friends = chat_db.getAmigos(user.getIdUsuario( ));
-        List<String> amaigos = new ArrayList<String>();
+        List<String > amaigos = new ArrayList<String>();
         for (Amigos row: friends) {
-            System.out.println(" ------------------- ");
-            System.out.println("id: " + (usuario_db.getUsuarioByID(row.getAmigo())).getNickname());
-            System.out.println("Usuario: " + row.getUsuario());
-            System.out.println("Amigo: " + row.getAmigo());
             amaigos.add(usuario_db.getUsuarioByID(row.getAmigo()).getNickname());
             
             
         }
-        System.out.println(amaigos);
-        model.addAttribute("lel", amaigos);
-        model.addAttribute("amigos", friends); 
+        
+        model.addAttribute("lel", amaigos); //Esto no lo mapeamos en el jsp xDDDD
         model.addAttribute("nombre", nombre);
         model.addAttribute("nickname", nickname);
         model.addAttribute("correo", correo);
