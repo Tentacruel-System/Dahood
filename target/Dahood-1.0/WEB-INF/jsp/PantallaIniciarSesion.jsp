@@ -31,7 +31,7 @@
                     <a class="nav-link" href="/Dahood/iniciarsesion">Iniciar Sesion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Dahood/crearPerfil">Registrar</a>
+                    <a class="nav-link" href="/Dahood/crearPerfil">Crear Perfil</a>
                 </li>
 
             </ul>

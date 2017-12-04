@@ -74,7 +74,7 @@ public class CrearPerfil {
             }
             usuario_db.guardar(newuser);
         }
-        return "redirect:/";
+        return "PantallaConfirmarCrearPerfil";
     }
     
     /**
@@ -87,5 +87,5 @@ public class CrearPerfil {
         model.addAttribute("gustos",gustos);
         return new ModelAndView("PantallaCrearPerfil", model);
     }
-  
+      
 }

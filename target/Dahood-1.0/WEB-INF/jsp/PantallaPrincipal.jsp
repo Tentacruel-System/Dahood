@@ -35,7 +35,7 @@ Author     : Leonardo
                 
                 <li class="nav-item">
                     
-                    <a class="nav-link" href = "/Dahood/principal/buscar">Buscar Amigos</a>
+                    <a class="nav-link" href = "/Dahood/principal/buscar">Buscar</a>
                 </li>
                 
                 <li class="nav-item">
