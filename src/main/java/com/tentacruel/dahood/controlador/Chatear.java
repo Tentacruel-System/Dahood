@@ -28,9 +28,12 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -47,24 +50,10 @@ public class Chatear {
     @Autowired
     UsuarioDAO usuario_db;
 
-    
-    @RequestMapping(value="/inicio", method = RequestMethod.GET)
-    public ModelAndView amigos(ModelMap model){
-        
-        List<Amigos> friends = chat_db.getAmigos(1);
-        
-        model.addAttribute("amigos", friends);
-        System.out.println(friends);
-        
-        return new ModelAndView("Chatear",model);
-        
-       
-    }
-
     @MessageMapping("/principal/chat")
     @SendTo("/topic/messages")
-    public Chat send( String texto, Authentication aunthentication) throws Exception {
-        String time = new SimpleDateFormat("HH:mm").format(new Date());
+    public Chat send( String texto, Authentication aunthentication, @RequestParam("param") String usr) throws Exception {
+        String time = new SimpleDateFormat("d MMM yyyy HH:mm").format(new Date());
        
         UserDetails usuario = (UserDetails) aunthentication.getPrincipal();
         String usuarioLoggeado = usuario.getUsername();
@@ -92,9 +81,35 @@ public class Chatear {
         String nombre = user.getNombre() + " " + user.getApellidoPaterno();
         String correo = user.getCorreo();
         
+        System.out.println(user.getIdUsuario());
+        
+        List<Amigos> friends = chat_db.getAmigos(user.getIdUsuario());
+        /*for(Amigos i: friends){
+        System.out.println(i.getAmigo() + " "+ i.getUsuario());
+        }*/
+        List<Integer> amaigos = new ArrayList<Integer>();
+        for(int i =0;i <  friends.size(); i++){
+            if(friends.get(i).getUsuario() == user.getIdUsuario()){
+                System.out.println(i + ""+friends.get(i).getAmigo());
+                amaigos.add(friends.get(i).getAmigo());
+            }
+        }
+        List<String> amai= new ArrayList<String>();       
+        for (Amigos row: friends) {
+            //if(row.getUsuario() == user.getIdUsuario())
+            amai.add(usuario_db.getUsuarioByID(row.getUsuario()).getNickname());
+            System.out.println(usuario_db.getUsuarioByID(row.getAmigo()).getNickname());   
+        }
+       
+        model.addAttribute("amigos", friends);
+        model.addAttribute("lel", amai); //Esto no lo mapeamos en el jsp xDDDD
+        
         model.addAttribute("nombre", nombre);
         model.addAttribute("nickname", nickname);
         model.addAttribute("correo", correo);
+        
+        
+        
         
         return new ModelAndView("PantallaChat", model);
         

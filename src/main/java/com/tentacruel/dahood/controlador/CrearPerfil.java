@@ -83,7 +83,7 @@ public class CrearPerfil {
      */
     @RequestMapping(value="/crearPerfil", method = RequestMethod.GET)
     public ModelAndView vistaPerfil(ModelMap model){
-        List<Gusto> gustos = gusto_db.getGustos();
+        List<Gusto> gustos = gusto_db.getGustos(); 
         model.addAttribute("gustos",gustos);
         return new ModelAndView("PantallaCrearPerfil", model);
     }

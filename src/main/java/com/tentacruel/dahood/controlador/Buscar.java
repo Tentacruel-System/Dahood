@@ -24,6 +24,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import java.util.HashSet;
 import java.util.Collections;   
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 /**
  *
@@ -87,6 +88,20 @@ public class Buscar {
         Collections.sort(usuarioCompatibilidad);
         model.addAttribute("usuarios",usuarioCompatibilidad);
         return new ModelAndView("PantallaBuscar", model);
+    }
+    
+     @RequestMapping(value= "/principal/agregarAmigo", method = RequestMethod.POST)
+    public String agregar(HttpServletRequest request, Authentication authentication){
+        UserDetails usuario = (UserDetails)authentication.getPrincipal();
+        String usuarioLoggeado = usuario.getUsername();
+        Usuario user = usuario_db.getUsuario(usuarioLoggeado);
+        Amigos amigo = new Amigos();
+        Integer id = Integer.parseInt(request.getParameter("id_usuario"));                     
+        amigo.setUsuario(user.getIdUsuario());        
+        amigo.setAmigo(id);
+        
+        gusto_db.guardarAmigo(amigo);     
+        return "redirect:/principal";
     }
     
     public class Pair implements Comparable<Pair>{
