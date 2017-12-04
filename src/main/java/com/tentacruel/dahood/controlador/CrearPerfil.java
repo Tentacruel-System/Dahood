@@ -49,6 +49,7 @@ public class CrearPerfil {
         String nickname = request.getParameter("nickname");
         String correo = request.getParameter("correo");
         String contrasena = request.getParameter("contrasena");
+        String confcontrasena = request.getParameter("confcontrasena");
         List<Gusto> gustosGuardados = gusto_db.getGustos();
         Iterator<Gusto> it = gustosGuardados.iterator();
         /* Verificamos que no exista otro usuario con el mismo correo o nickname */
@@ -61,7 +62,6 @@ public class CrearPerfil {
             newuser.setNickname(nickname);
             newuser.setCorreo(correo);
             newuser.setContrasena(contrasena);
-            newuser.setFoto("");
             //newuser.setFoto("");
             while(it.hasNext()){
                 Gusto gustoExistente = it.next();
