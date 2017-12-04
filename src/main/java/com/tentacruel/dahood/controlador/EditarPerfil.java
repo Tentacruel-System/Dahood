@@ -5,8 +5,12 @@
  */
 package com.tentacruel.dahood.controlador;
 
+import com.tentacruel.dahood.mapeobd.Gusto;
 import com.tentacruel.dahood.mapeobd.Usuario;
 import com.tentacruel.dahood.modelo.UsuarioDAO;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -14,6 +18,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -28,8 +34,26 @@ public class EditarPerfil {
      * @return la dirección de la página a visulizar
      */
     @RequestMapping(value="/principal/editarPerfil", method = RequestMethod.GET)
-    public String vistaEditarPerfil(){
-        return "PantallaEditarPerfil";
+    public ModelAndView vistaEditarPerfil(HttpServletRequest request, ModelMap model, Authentication authentication){
+        UserDetails usuario = (UserDetails) authentication.getPrincipal();
+        String usuarioLoggeado = usuario.getUsername();
+        Usuario user = usuario_db.getUsuario(usuarioLoggeado);
+        
+        String nombre = user.getNombre();
+        String apellidoPaterno = user.getApellidoPaterno();
+        String apellidoMaterno = user.getApellidoMaterno();
+        String nickname = user.getNickname();
+        String correo= user.getCorreo();
+        Set<Gusto> conjuntoGustos = user.getGustos(); 
+        List<Gusto> gustos = new LinkedList<>(conjuntoGustos);
+        model.addAttribute("nombre", nombre);
+        model.addAttribute("apellidoPaterno", apellidoPaterno);
+        model.addAttribute("apellidoMaterno", apellidoMaterno);
+        model.addAttribute("nickname", nickname);
+        model.addAttribute("correo", correo);
+        model.addAttribute("gustos", gustos);
+        
+        return new ModelAndView("PantallaEditarPerfil",model);
     }
     
     /**
@@ -68,6 +92,6 @@ public class EditarPerfil {
         //persistencia en la base de datos
         //se actualiza directo en la base de datos
         usuario_db.actualizar(user);
-        return "redirect:/principal";
+        return "redirect:/principal/verPerfil";
     }
 }

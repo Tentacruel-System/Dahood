@@ -41,33 +41,33 @@
 <body class = "body2">
     <div class = "register">
         <h1>Crear Perfil</h1>
-        <div>
-            <!-- action contiene la carpeta del proyecto y el nombre de la peticion -->
-            <form action="/Dahood/crearPerfil" method="post" onsubmit="return validar(this)">
-                <input name="nombre" type="text" placeholder="Nombre" required/>
-                <input name="apellido_p" type="text" placeholder="Apellido paterno" required/>
-                <input name="apellido_m" type="text" placeholder="Apellido materno"/>
-                <input name="nickname" type="text" placeholder="Nickname" required/>
-                <input name="correo" type="text" placeholder="Correo" pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" title="Escriba una dirección de correo válida" required/>
-                <input name="contrasena" type="password" id="pass" class="pass" placeholder="Contraseña" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Debe contener al menos un número, una mayúscula, una minúscula, y al menos 8 caracteres" required/>
-        </div>
-        <div class = "form-check scroll">
-            <h3>Selecciona tus gustos</h3>
-            <c:set var="numGustos" value="${gustos.size()}" scope="session" />
-            <c:set var="gustosBD" value="${gustos}" scope="session"/>   
 
-            <c:forEach begin="0" end="${numGustos-1}" var="i">
+        <!-- action contiene la carpeta del proyecto y el nombre de la peticion -->
+        <form action="/Dahood/crearPerfil" method="post" onsubmit="return validar(this)">
+            <input name="nombre" type="text" placeholder="Nombre" required/>
+            <input name="apellido_p" type="text" placeholder="Apellido paterno" required/>
+            <input name="apellido_m" type="text" placeholder="Apellido materno"/>
+            <input name="nickname" type="text" placeholder="Nickname" required/>
+            <input name="correo" type="text" placeholder="Correo" pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" title="Escriba una dirección de correo válida" required/>
+            <input name="contrasena" type="password" id="pass" class="pass" placeholder="Contraseña" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Debe contener al menos un número, una mayúscula, una minúscula, y al menos 8 caracteres" required/>
+
+            <div class = "form-check scroll">
+                <h3>Selecciona tus gustos</h3>
+                <c:set var="numGustos" value="${gustos.size()}" scope="session" />
+                <c:set var="gustosBD" value="${gustos}" scope="session"/>   
+
+                <c:forEach begin="0" end="${numGustos-1}" var="i">
                     <input type="checkbox" class = "form-check-input" name="${gustosBD[i].nombre_gusto}" value ="${gustosBD[i].nombre_gusto}"/>
                     <p><c:out value= "${gustosBD[i].nombre_gusto}"/></p>
-            </c:forEach>
-        </div>
-        <input name="submit" type="submit" id="boton" value="Aceptar" class="boton"/>
-    </form>
-    <form:form method="GET" action = "/Dahood" id = "cancelar"></form:form>
-    <p class="lead">
-        <input type="submit" class="btn btn-primary btn-lg" form ="cancelar" value="Cancelar"/>
-    </p>
-</div><!-- fin contenedor -->
+                </c:forEach>
+            </div>
+            <input name="submit" type="submit" id="boton" value="Aceptar" class="boton"/>
+        </form>
+        <form:form method="GET" action = "/Dahood" id = "cancelar"></form:form>
+        <p class="lead">
+            <input type="submit" class="btn btn-primary btn-lg" form ="cancelar" value="Cancelar"/>
+        </p>
+    </div><!-- fin contenedor -->
 
 
 </body>

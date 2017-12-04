@@ -16,7 +16,7 @@
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/Inicio.css"/> ">
         <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
         <script src="/Dahood/js/stomp.js"></script>
-        
+
     <nav class="navbar navbar-expand-lg navbar-dark" style = "background-color: black;">
         <a class="navbar-brand" href="/Dahood">Dahood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,54 +39,33 @@
             </ul>
         </div>
     </nav>
-    </head>
-    <body>
-        <div class="container-fluid principal">
-            <div class ="container-fluid">
-                <div class = "row">
+</head>
+<body>
+    <div class = "register">
+        <h1>Crear Perfil</h1>
 
-                    <div class ="col-10 style" style = "padding-top: 1px">
-                        <div id="envoltura">
-                            <div id="contenedor">
+        <!-- action contiene la carpeta del proyecto y el nombre de la peticion -->
+        <form action="/Dahood/principal/editarPerfil" method="post">
+            <input name="nombre" type="text" placeholder="${nombre}"/>
+            <input name="apellido_p" type="text" placeholder="${apellidoPaterno}"/>
+            <input name="apellido_m" type="text" placeholder="${apellidoMaterno}"/>
+            <input name="correo" type="text" placeholder="${correo}" pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" title="Escriba una dirección de correo válida"/>
+            <label form="contrasena">Cambiar contraseña</label>
+            <input name="contrasena" type="password" id="pass" class="pass" placeholder="Contraseña" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Debe contener al menos un número, una mayúscula, una minúscula, y al menos 8 caracteres"/>
 
-                                <div id="cabecera">
-                                    <h2>Editar Perfil</h2>
-                                </div>
+            <div class = "form-check scroll">
+                <h3>Selecciona tus gustos</h3>
+                <c:set var="numGustos" value="${gustos.size()}" scope="session" />
+                <c:set var="gustosBD" value="${gustos}" scope="session"/>   
 
-                                <div id="cuerpo">
-                                    <!-- action contiene la carpeta del proyecto y el nombre de la peticion -->
-                                    <form action="/Dahood/principal/editarPerfil" method="post" >
-
-                                        <p><label for="nombre">Nombre:</label>
-                                            <input name="nombre" type="text" placeholder="...escribe tu nombre" autofocus=""/></p>
-
-                                        <p><label for="apellido_p">Apellido paterno:</label>
-                                            <input name="apellido_p" type="text" placeholder="...escribe apellido paterno" /></p>
-
-                                        <p><label for="apellido_m">Apellido materno:</label>
-                                            <input name="apellido_m" type="text" placeholder="...escribe apellido materno" /></p>
-
-                                        <p><label for="correo">Correo:</label>
-                                            <input name="correo" type="text" placeholder="...escribe tu correo"/></p>
-
-                                        <p><label for="contrasena">Contraseña:</label>
-                                            <input name="contrasena" type="password" id="pass" class="pass" placeholder="...escribe tu contraseña"/></p>
-
-                                        <p><label for="confcontrasena">Confirmar Contraseña:</label>
-                                            <input name="confcontrasena" type="password" id="repass" class="repass" placeholder="escribe de nuevo tu contraseña"/></p>
-
-                                        <p><button name="submit" type="submit" id="boton" value="Aceptar" class="boton">Aceptar</button></p>
-                                    </form>
-                                </div>
-                            </div><!-- fin contenedor -->
-                        </div>
-                    </div>
-                    <div class ="col-2 barraElementos">
-                        Barra Lateral
-                    </div>
-                </div>    
+                <c:forEach begin="0" end="${numGustos-1}" var="i">
+                    <input type="checkbox" class = "form-check-input" name="${gustosBD[i].nombre_gusto}" value ="${gustosBD[i].nombre_gusto}"/>
+                    <p><c:out value= "${gustosBD[i].nombre_gusto}"/></p>
+                </c:forEach>
             </div>
-        </div>
-    </body>
+            <input name="submit" type="submit" id="boton" value="Aceptar" class="boton"/>
+        </form>
+    </div><!-- fin contenedor -->
+</body>
 </html>
 
