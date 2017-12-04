@@ -1,0 +1,267 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12/10/2017, 04:46:14 PM
+    Author     : maw
+*/
+.container2{
+    max-width: 100%;
+}
+
+.body2{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: url(https://images8.alphacoders.com/292/292577.jpg);
+    background-attachment: fixed;
+    background-size: cover; 
+    background-position: top;
+}
+
+.login{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 350px;
+    height: 500px;
+    padding: 80px 40px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,.5);
+}
+
+.login h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    color: #fff;
+}
+.login input{
+    width: 100%;
+    margin-bottom: 20px;
+    
+}
+
+.login input[type="text"],
+.login input[type="password"]{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+
+::placeholder{
+    color: rgba(255,255,255,.5);
+}
+.login p{
+    font-weight: bold;
+    color: #fff;
+    
+}
+
+.login input[type="submit"]{
+    border:none;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+    background: #f86b7d;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.login input[type = "submit"]:hover{
+    background: #fea62c;
+    color: #fff;
+}
+
+
+
+.transparente {
+    background-color: transparent;
+}
+
+
+.register{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 500px;
+    height: 760px;
+    padding: 0px 40px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,.5);
+    
+}
+
+
+.scroll{
+    overflow: auto;
+    height: 100px;
+    background: rgba(0,0,0,0.3);
+}
+
+.scroll2{
+    overflow: auto;
+    height: 500px;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+.register h3{
+    color: #fff;
+    margin:0;
+    padding-bottom: 5%;
+}
+.register h1{
+    margin: 0;
+    padding: 3% 0 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.register input{
+    width: 100%;
+    margin-bottom: 20px;
+    
+}
+.register td{
+    color: #fff;
+}
+
+.register input[type="text"],
+.register input[type="password"]{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+
+::placeholder{
+    color: rgba(255,255,255,.5);
+}
+.register p{
+    font-weight: bold;
+    color: #fff;
+    
+}
+
+.register input[type="submit"]{
+    border:none;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+    background: #f86b7d;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.register .form-check{
+    margin-bottom: 2.5rem;
+    padding-left: 20%;
+    top: 1%;
+    
+}
+
+.register input[type = "submit"]:hover{
+    background: #fea62c;
+    color: #fff;
+}
+
+.lol{
+    background-color: black;
+}
+
+.display-3{
+    
+    text-align: center;
+}
+
+.card-img-top{
+    max-block-size: 50%;
+}
+
+.lead{
+    font-size: 2.25rem;
+    text-align: center; 
+}
+
+#grad2 {
+    
+    background: linear-gradient(#bfe9ff,#ff6e7f);
+}
+
+
+
+.footer{
+    background-color: #686E71
+}
+
+
+
+
+
+
+
+
+.bordebot{
+    border-bottom: 2px solid rgba(0,0,0,.10);
+}
+
+
+
+
+@media (max-width: 797px) {
+    body { 
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+.card-deck{
+    padding-bottom: 2%;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 930px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+
+
