@@ -50,23 +50,6 @@ public class Chatear {
     @Autowired
     UsuarioDAO usuario_db;
 
-    
-    /*@RequestMapping(value="/principal/chat", method = RequestMethod.GET)
-    public ModelAndView amigos(ModelMap model,Authentication aunthentication){
-        
-        UserDetails usuario = (UserDetails) aunthentication.getPrincipal();
-        String usuarioLoggeado = usuario.getUsername();
-        Usuario user = usuario_db.getUsuario(usuarioLoggeado);
-        
-        List<Amigos> friends = chat_db.getAmigos(user.getIdUsuario());
-       
-        
-        model.addAttribute("amigos", friends);
-        return new ModelAndView("PantallaChat",model);
-        
-       
-    }*/
-
     @MessageMapping("/principal/chat")
     @SendTo("/topic/messages")
     public Chat send( String texto, Authentication aunthentication, @RequestParam("param") String usr) throws Exception {
@@ -111,15 +94,15 @@ public class Chatear {
                 amaigos.add(friends.get(i).getAmigo());
             }
         }
-        /*List<String> amai= new ArrayList<String>();       
-        for (Amigos row: amaigos) {
-            if(row.getUsuario() == user.getIdUsuario())
-            amai.add(usuario_db.getUsuarioByID(row.getAmigo()).getNickname());
+        List<String> amai= new ArrayList<String>();       
+        for (Amigos row: friends) {
+            //if(row.getUsuario() == user.getIdUsuario())
+            amai.add(usuario_db.getUsuarioByID(row.getUsuario()).getNickname());
             System.out.println(usuario_db.getUsuarioByID(row.getAmigo()).getNickname());   
-        }*/
+        }
        
         model.addAttribute("amigos", friends);
-        //model.addAttribute("lel", amaigos); //Esto no lo mapeamos en el jsp xDDDD
+        model.addAttribute("lel", amai); //Esto no lo mapeamos en el jsp xDDDD
         
         model.addAttribute("nombre", nombre);
         model.addAttribute("nickname", nickname);

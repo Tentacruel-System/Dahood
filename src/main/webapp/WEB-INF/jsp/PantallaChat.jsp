@@ -66,7 +66,7 @@
             socket.onclose = function() {
             };
             stompClient = Stomp.over(socket);
-            stompClient.connect({},function(frame){
+            stompClient.connect({},function(){
                 setConnected(true);
                 stompClient.subscribe('/topic/messages', function(messageOutput){
                     var side = 'left';
@@ -89,7 +89,7 @@
            
             $message = $($('.message_template').clone().html());
              
-            $message.addClass("message left ").find('.text').html(messageOutput.ruta);
+            $message.addClass("message left ").find('.text').html(messageOutput.nombre + ": "+ messageOutput.ruta + " (" + messageOutput.fecha + ")");
             $('.messages').append($message);
             return setTimeout(function(){
                 return $message.addClass('appeared');
@@ -111,7 +111,7 @@
                 
                 stompClient.send("/app/principal/chat", {}, text, {});
       
-                $('message_input').val('');
+                $('.message_input').val('');
                 $messages = $('.messages');
                 message_side = message_side === 'left' ? 'right' : 'left';
                 return $messages.animate({scrollTop: $messages.prop('scrollHeight')},300);
@@ -141,8 +141,8 @@
                     <h5> Amigos </h5>
                     <a >
                         
-                        <c:forEach var= "usuario" items ="${amigos}">
-                            <h4 class="list-group-item list-group-item-action">${usuario.usuario}</h4>
+                        <c:forEach var= "usuario" items ="${lel}">
+                            <h4 class="list-group-item list-group-item-action">${usuario}</h4>
                             
                         </c:forEach>
                     </a>
