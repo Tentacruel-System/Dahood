@@ -10,12 +10,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Editar perfil</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/Inicio.css"/> ">
-        <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-        <script src="/Dahood/js/stomp.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" integrity="sha384-1L94saFXWAvEw88RkpRz8r28eQMvt7kG9ux3DdCqya/P3CfLNtgqzMnyaUa49Pl2" crossorigin="anonymous">
+        <title>Editar perfil</title>
 
     <nav class="navbar navbar-expand-lg navbar-dark" style = "background-color: black;">
         <a class="navbar-brand" href="/Dahood">Dahood</a>
@@ -40,9 +39,9 @@
         </div>
     </nav>
 </head>
-<body>
+<body class="body2">
     <div class = "register">
-        <h1>Crear Perfil</h1>
+        <h1>Editar Perfil</h1>
 
         <!-- action contiene la carpeta del proyecto y el nombre de la peticion -->
         <form action="/Dahood/principal/editarPerfil" method="post">

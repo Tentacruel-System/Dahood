@@ -19,6 +19,7 @@ Author     : Leonardo
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/Inicio.css"/> ">
         <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
         <script src="/Dahood/js/stomp.js"></script>
+        <link rel="stylesheet" type="text/css" href="<c:url value="/css/confirmarEliminarPerfil.css"/>">
 
     <nav class="navbar navbar-expand-lg navbar-dark" style = "background-color: black;">
         <a class="navbar-brand" href="/Dahood">Dahood</a>
@@ -43,7 +44,7 @@ Author     : Leonardo
         </div>
     </nav>
 </head>
-<body>
+<body class="body2">
     <div class="register">
         <c:set var="numGustos" value="${gustos.size()}"  scope="session" /> 
         <c:set var="gustosBD" value="${gustos}" scope="session"/>   

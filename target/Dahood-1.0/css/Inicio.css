@@ -214,7 +214,9 @@ and open the template in the editor.
     background-color: #686E71
 }
 
-
+.fondo{
+    background: #d1e7b1;
+}
 
 
 
@@ -262,6 +264,10 @@ and open the template in the editor.
         padding: 15px;
       }
       .row.content {height: auto;} 
+    }
+    
+    .bottom_wrapper .send_message{
+        background: #d1e7b1;
     }
 
 

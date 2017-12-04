@@ -1,4 +1,4 @@
-<%-- 
+    <%-- 
     Document   : chat-test
     Created on : 30 /10/2017, 01:19:40 PM
     Author     : maw & orlando
@@ -163,7 +163,7 @@
                     <a >
                         
                         <c:forEach var= "usuario" items ="${lel}">
-                            <h4 class=" sub subs list-group-item list-group-item-action">${usuario}</h4>
+                            <h4 class=" sub subs list-group-item list-group-item-action fondo">${usuario}</h4>
                             
                         </c:forEach>
                     </a>
@@ -191,7 +191,7 @@
                             <p id="response"></p>
                         </div>
                         
-                        <div class="send_message">
+                        <div class="send_message fondo">
                             <div class="icon"></div>
                             <div class="text">Send</div>
                             
