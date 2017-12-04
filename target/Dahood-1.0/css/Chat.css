@@ -75,7 +75,6 @@ body {
   list-style: none;
   padding: 20px 10px 0 10px;
   margin: 0;
-  height: 765px;
   overflow: scroll;
 }
 .messages .message {
@@ -209,3 +208,4 @@ body {
   display: none;
 }
 
+  height: 765px;
