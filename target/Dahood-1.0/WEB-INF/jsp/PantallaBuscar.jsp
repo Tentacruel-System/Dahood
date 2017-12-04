@@ -75,6 +75,11 @@
                                                 <c:forEach var="gusto" items="${pareja.usuario.gustos}">
                                                 <th>${gusto.nombre_gusto}</th>
                                                 </c:forEach>
+                                                <th><form action="/Dahood/principal/agregarAmigo" method="POST">                                                        
+                                                        <input id="id_usuario" name="id_usuario" hidden="true" value="${pareja.usuario.idUsuario}"><br>
+                                                        <!--<input id="nombre" name="nombre"   placeholder="${pareja.usuario.idUsuario}"><br>-->
+                                                        <button type="submit" class="btn btn-primary btn-lg active">Agregar</button>
+                                                        </form></th>
                                             </tbody>
                                             
                                         </c:forEach>
