@@ -33,6 +33,16 @@
     </form:form>
     <div class = "container-fluid">
         <div class="jumbotron" >
+            <c:if test="${not empty perfilEliminado1}">
+                <div class="alert alert-info">
+                    ${perfilEliminado1}
+                </div>
+            </c:if>
+            <c:if test="${not empty exito && empty perfilEliminado1}">
+                <div class="alert alert-info">
+                    ${exito}
+                </div>
+            </c:if>
             <h1 class="display-3">Dahood</h1>
             <p style = "text-align: center;">La red social para los nuevos amigos.   </p>
             <hr class="my-4">

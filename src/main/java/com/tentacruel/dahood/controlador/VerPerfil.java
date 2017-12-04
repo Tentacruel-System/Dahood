@@ -20,6 +20,7 @@ import com.tentacruel.dahood.mapeobd.Gusto;
 import java.util.Set;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Collections;
 /**
  *
  * @author jesus
@@ -39,11 +40,15 @@ public class VerPerfil {
         String correo= user.getCorreo();
         Set<Gusto> conjuntoGustos = user.getGustos(); 
         List<Gusto> gustos = new LinkedList<>(conjuntoGustos);
+        List<String> nombreGustos = new LinkedList<>();
+        for(Gusto g: gustos){
+            nombreGustos.add(g.getNombre_gusto());
+        }
+        Collections.sort(nombreGustos);
         model.addAttribute("nombre", nombre);
         model.addAttribute("nickname", nickname);
         model.addAttribute("correo", correo);
-        model.addAttribute("gustos", gustos);
-        
+        model.addAttribute("gustos", nombreGustos);     
         return new ModelAndView("PantallaVerPerfil",model);
     }
     

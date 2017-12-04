@@ -56,20 +56,22 @@
                             <h2>${nickname}</h2>
                             <h2>${correo} </h2>
                             <table>
-                                <c:forEach begin="0" end="${Math.round((numGustos/6) - 1)}" var="i">
-                                   <tr>
-                                   <c:forEach begin="0" end = "5" var = "j">
-                                       <td>
-                                           <c:out value= "${gustosBD[i*6+j].nombre_gusto}"/>
-                                       </td>
-                                   </c:forEach>
-                                   </tr>
-                                </c:forEach>
-                                <c:if test= "${numGustos % 6} > 0}">
+                                <c:if test = "${Math.floor((numGustos/6) - 1)} > 0">
+                                    <c:forEach begin="0" end="${Math.floor((numGustos/6) - 1)}" var="i">
+                                       <tr>
+                                       <c:forEach begin="0" end = "5" var = "j">
+                                           <td>
+                                               <c:out value= "${gustosBD[i*6+j]}"/>
+                                           </td>
+                                       </c:forEach>
+                                       </tr>
+                                    </c:forEach>
+                                </c:if>
+                                <c:if test= "${(numGustos % 6) > 0}">
                                     <tr>   
                                         <c:forEach begin="0" end="${(numGustos % 6) - 1}" var="k">
                                             <td>
-                                                <c:out value= "${gustosBD[Math.round(numGustos / 6) * 6 + k].nombre_gusto}"/>
+                                                <c:out value= "${gustosBD[Math.floor(numGustos / 6) * 6 + k]}"/>
                                             </td>
                                         </c:forEach>
                                     </tr>
