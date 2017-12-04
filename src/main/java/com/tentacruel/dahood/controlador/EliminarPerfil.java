@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;  
+import org.springframework.ui.Model;
 
 /**
  *
@@ -31,21 +32,19 @@ public class EliminarPerfil {
     }
     @RequestMapping(value="/principal/eliminarPerfil", method=RequestMethod.POST)
     public String eliminarPerfil(HttpServletRequest request, 
-            Authentication authentication, RedirectAttributes model){
+            Authentication authentication, RedirectAttributes model, Model model1){
         String contrasenaConfirmacion = request.getParameter("contrasena");
         UserDetails usuario = (UserDetails) authentication.getPrincipal();
         String usuarioLoggeado = usuario.getUsername();
         Usuario user = usuario_db.getUsuario(usuarioLoggeado);
         String contrasenaUsuarioLoggeado = user.getContrasena();
-        System.out.println(contrasenaConfirmacion + " " + contrasenaUsuarioLoggeado + " " + usuario.getUsername());
         if(contrasenaConfirmacion.equals(contrasenaUsuarioLoggeado)){
             usuario_db.eliminar(user);
             model.addFlashAttribute("perfilEliminado", "Tu perfil ha sido exitosamente eliminado");
             return "redirect:/principal/salir";
         }
         else{
-            model.addAttribute("errorConfirmacionContrasena",
-                    "Contraseña incorrecta. Intente de nuevo");
+            model1.addAttribute("errorCC", "Contraseña incorrecta. Intente de nuevo");
             return "PantallaConfirmarEliminarPerfil";
         }
         

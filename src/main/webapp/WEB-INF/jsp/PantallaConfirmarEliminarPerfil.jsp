@@ -34,9 +34,9 @@
                    required
                    oninvalid = "this.setCustomValidity('Llena este campo')"
                    oninput="setCustomValidity('')"/>
-            <c:if test="${not empty errorConfirmacionContrasena}">
+            <c:if test="${not empty errorCC}">
                 <div class="alert alert-danger">
-                    <strong>Error:</strong> ${errorConfirmacionContrasena}
+                    <strong>Error:</strong> ${errorCC}
                 </div>
             </c:if>
             <input 
