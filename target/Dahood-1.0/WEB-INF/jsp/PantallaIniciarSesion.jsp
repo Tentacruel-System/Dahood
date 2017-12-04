@@ -16,37 +16,47 @@
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/Inicio.css"/> ">
         <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" integrity="sha384-1L94saFXWAvEw88RkpRz8r28eQMvt7kG9ux3DdCqya/P3CfLNtgqzMnyaUa49Pl2" crossorigin="anonymous">
         <title>JSP Page</title>
-        
+</head>
+<body class ="body2">
     <nav class="navbar navbar-expand-lg navbar-dark" style = "background-color: black;">
         <a class="navbar-brand" href="/Dahood">Dahood</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
-                
+
                 <li class="nav-item active">
                     <a class="nav-link" href="/Dahood/iniciarsesion">Iniciar Sesion</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/Dahood/crearPerfil">Registrar</a>
                 </li>
-                
+
             </ul>
-            
+
         </div>
     </nav>
-</head>
-<body class ="body2">
     <div class="login">
+        <c:if test="${param.error != null}">
+            <div class="alert alert-danger">
+                Nickname o contraseña inválidos
+            </div>
+        </c:if>
         <h1>Iniciar Sesión</h1>
         <form:form method="POST" action = "/Dahood/iniciarsesion" >
             <form>
                 <p>User</p>
-                <input type='text' name='usuario' value='' placeholder = "Nombre de usuario">  
+                <input type='text' name='usuario' value='' placeholder = "Nombre de usuario"
+                    required
+                    oninvalid = "this.setCustomValidity('Llena este campo')"
+                    oninput="setCustomValidity('')"/>  
                 <p>Password</p>
-                <input type='password' name='contrasena' placeholder = "Contraseña"/>
+                <input type='password' name='contrasena' placeholder = "Contraseña"
+                    required
+                    oninvalid = "this.setCustomValidity('Llena este campo')"
+                    oninput="setCustomValidity('')"/>/>
                 <input name="submit" type="submit" value="Iniciar Sesión"/>    
             </form>
         </form:form>

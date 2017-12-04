@@ -27,8 +27,6 @@
                              username-parameter="usuario"
                              />
         <security:csrf disabled="true"/>
-        <security:logout logout-success-url="/"
-                         logout-url="/principal/salir"/>
     </security:http> 
     
     <security:authentication-manager alias="authenticationManager">
