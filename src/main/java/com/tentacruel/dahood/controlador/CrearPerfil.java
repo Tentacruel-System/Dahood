@@ -62,7 +62,7 @@ public class CrearPerfil {
             newuser.setNickname(nickname);
             newuser.setCorreo(correo);
             newuser.setContrasena(contrasena);
-            //newuser.setFoto("");
+            newuser.setFoto("");
             while(it.hasNext()){
                 Gusto gustoExistente = it.next();
                 String nombreGusto = gustoExistente.getNombre_gusto();
