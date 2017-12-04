@@ -48,6 +48,7 @@
     <script type="text/javascript">
         var stompClient = null;
         var Message;
+        var subscripcion = 0;
         function setConnected(connected){
             document.getElementById('connect').disabled = connected;
             //document.getElementById('disconnect').disabled = !connect;
@@ -66,16 +67,36 @@
             socket.onclose = function() {
             };
             stompClient = Stomp.over(socket);
-            stompClient.connect({},function(){
-                setConnected(true);
-                stompClient.subscribe('/topic/messages', function(messageOutput){
-                    var side = 'left';
-                    showMessageOutput(side,JSON.parse(messageOutput.body));
-                });
-            },function(error){
-                console.log(error);
+            stompClient.connect();
+        
+        //Creoamos la subscripcion
+        $('.sub').click(function (){    
+                if(subscripcion == 0){
+                    subscripcion = 1;
+                    return sub();
+                }
             });
+            
+        
+            
+            
+         function sub() {
+             
+             
+                 subscrip =stompClient.subscribe('/topic/messages',function(messageOutput){
+                 setConnected(true);
+                 side = "left";
+                 showMessageOutput(side,JSON.parse(messageOutput.body));
+                 $('.close').click(function (){    
+                        subscrip.unsubscribe();
+                        document.getElementById("x").innerHTML=""; 
+                        subscripcion = 0;
+            });
+                
+            });        
+         }  
         }
+        
         function disconnect() {
             if(stompClient !==  null){
                 stompClient.disconnect();
@@ -110,12 +131,12 @@
                 var text = document.getElementById('text').value;
                 
                 stompClient.send("/app/principal/chat", {}, text, {});
-      
+                
                 $('.message_input').val('');
                 $messages = $('.messages');
                 message_side = message_side === 'left' ? 'right' : 'left';
                 return $messages.animate({scrollTop: $messages.prop('scrollHeight')},300);
-                stompClient.send("/app/principal/chat", {}, text, {});
+                
             };
             $('.send_message').click(function (e){
                 return sendMessage();
@@ -142,7 +163,7 @@
                     <a >
                         
                         <c:forEach var= "usuario" items ="${lel}">
-                            <h4 class="list-group-item list-group-item-action">${usuario}</h4>
+                            <h4 class=" sub subs list-group-item list-group-item-action">${usuario}</h4>
                             
                         </c:forEach>
                     </a>
@@ -158,12 +179,12 @@
                         <div class="buttons">
                             <div class="button close"></div>
                             <div class="button minimize"></div>
-                            <div class="button maximize"></div>
+                            <div class=" close button maximize"></div>
                             
                         </div><div class="title">Chat</div>
                         
                     </div>
-                    <ul class="messages"></ul>
+                    <ul id= "x" class="messages"></ul>
                     <div class="bottom_wrapper clearfix">
                         <div id="conversationDiv" class="message_input_wrapper">
                             <input  id= "text" class="message_input" placeholder="Type your message here..." />
