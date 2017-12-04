@@ -42,7 +42,6 @@ Author     : Leonardo
             </ul>
         </div>
     </nav>
-<<<<<<< HEAD
 </head>
 <body>
     <div class="register">
@@ -55,7 +54,7 @@ Author     : Leonardo
         <div>
             <h3>Gustos</h3>
             <c:forEach begin="0" end="${numGustos}" var="i">
-                <c:out value= "${gustosBD[i].nombre_gusto} "/>
+                <c:out value= "${gustosBD[i]} "/>
             </c:forEach>
                     </div>
         <form:form method="GET" action = "/Dahood/principal/confirmarEliminarPerfil" id = "eliminarPerfil" ></form:form>

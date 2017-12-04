@@ -56,7 +56,7 @@
                 <input type='password' name='contrasena' placeholder = "Contraseña"
                     required
                     oninvalid = "this.setCustomValidity('Llena este campo')"
-                    oninput="setCustomValidity('')"/>/>
+                    oninput="setCustomValidity('')"/>
                 <input name="submit" type="submit" value="Iniciar Sesión"/>    
             </form>
         </form:form>
