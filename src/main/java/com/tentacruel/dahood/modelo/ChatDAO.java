@@ -7,6 +7,7 @@ package com.tentacruel.dahood.modelo;
 
 import com.tentacruel.dahood.mapeobd.Amigos;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -30,7 +31,7 @@ public class ChatDAO {
     }
     
     
-    public List<Amigos> getAmigos(int usuario){
+    public List<Amigos> getAmigos(int user){
         
         List<Amigos> result  = null;
         Session session = sessionFactory.openSession();
@@ -38,18 +39,19 @@ public class ChatDAO {
         try{
             tx = session.beginTransaction();
             //Checar que amigos este bien si no cambiarlo por conocer.
-            String s = "select * from usuario inner join conocer on usuario.id_usuario = conocer.amigo where usuario =:id";
-            SQLQuery query = session.createSQLQuery(s);
-            query.setParameter("id", usuario);
-            query.addEntity(Amigos.class);
+            String hql = "FROM Amigos where amigo = :user";//*inner join conocer on usuario.id_usuario = conocer.usuario where usuario =:id"
+            Query query = session.createQuery(hql);
+            query.setParameter("user",user);
+            //query.setParameter("id", usuario);
+            
             result = query.list();
+            tx.commit();
  
         }
-        catch (Exception e){
+        catch (HibernateException e){
             if(tx != null){
                 tx.rollback();
             }
-            e.printStackTrace();
         }
         finally{
             session.close();

@@ -139,9 +139,10 @@
                 <h1 id = "from"> ${nickname}</h1>
                 <div class="list-group">
                     <h5> Amigos </h5>
-                    <a class="list-group-item list-group-item-action">
-                        <c:forEach var= "usuario" items ="${lel}">
-                            <h4 class="list-group-item-heading">${usuario}</h4>
+                    <a >
+                        
+                        <c:forEach var= "usuario" items ="${amigos}">
+                            <h4 class="list-group-item list-group-item-action">${usuario.usuario}</h4>
                             
                         </c:forEach>
                     </a>

@@ -98,16 +98,29 @@ public class Chatear {
         String nombre = user.getNombre() + " " + user.getApellidoPaterno();
         String correo = user.getCorreo();
         
+        System.out.println(user.getIdUsuario());
         
-        List<Amigos> friends = chat_db.getAmigos(user.getIdUsuario( ));
-        List<String > amaigos = new ArrayList<String>();
-        for (Amigos row: friends) {
-            amaigos.add(usuario_db.getUsuarioByID(row.getAmigo()).getNickname());
-            
-            
+        List<Amigos> friends = chat_db.getAmigos(user.getIdUsuario());
+        /*for(Amigos i: friends){
+        System.out.println(i.getAmigo() + " "+ i.getUsuario());
+        }*/
+        List<Integer> amaigos = new ArrayList<Integer>();
+        for(int i =0;i <  friends.size(); i++){
+            if(friends.get(i).getUsuario() == user.getIdUsuario()){
+                System.out.println(i + ""+friends.get(i).getAmigo());
+                amaigos.add(friends.get(i).getAmigo());
+            }
         }
+        /*List<String> amai= new ArrayList<String>();       
+        for (Amigos row: amaigos) {
+            if(row.getUsuario() == user.getIdUsuario())
+            amai.add(usuario_db.getUsuarioByID(row.getAmigo()).getNickname());
+            System.out.println(usuario_db.getUsuarioByID(row.getAmigo()).getNickname());   
+        }*/
+       
+        model.addAttribute("amigos", friends);
+        //model.addAttribute("lel", amaigos); //Esto no lo mapeamos en el jsp xDDDD
         
-        model.addAttribute("lel", amaigos); //Esto no lo mapeamos en el jsp xDDDD
         model.addAttribute("nombre", nombre);
         model.addAttribute("nickname", nickname);
         model.addAttribute("correo", correo);
