@@ -38,48 +38,52 @@
         </div>
     </nav>
 </head>
-<body>
-    <div class="container-fluid principal">  
+<body class = "body2">
+    
+    <div class="container-fluid principal buscar">  
         <div class ="container-fluid">
-            <div class = "row">
-                <div class ="col-8 ">
-                    <div class="container-fluid bordeChat" style="overflow: scroll">
+            <div class = "cajita">
+                <div class ="col-10">
+                    <div class="container-fluid bordeChat">
                         
                         <header class="headerchat bordebot">
                             
-                            Personas con intereses en común
+                            <h1>Personas con intereses en común</h1>
                             
                         </header>
                         
                         <div class = "row">
                             
                             <%--  <div class="col-2 bordeRigth">Amigos</div>   --%>                                                                    
-                            <div class ="col-8">
-                                <div class="container-fluid">                                        
-                                    <table class="table">
+                            <div class ="col-10">
+                                <div class="container-fluid">
+                                    <table class ="table">
                                         <thead>
                                             <tr>
-                                                <th>Nickname</th>
-                                                <th>Nombre</th>
-                                                <th>Correo</th>
-                                                <th>Compatibilidad</th>
-                                                <th>Gustos</th>
+                                                <th><p>Nickname</p></th>
+                                                <th><p>Nombre</p></th>
+                                                <th><p>Correo</p></th>
+                                                <th><p>Compatibilidad</p></th>
+                                                <th><p>Gustos</p></th>
                                             </tr>
                                         </thead>
-                                        <c:forEach var="pareja" items="${usuarios}">
-                                            <tbody>                                                   
-                                            <th>${pareja.usuario.nickname}</th>
-                                            <th>${pareja.usuario.nombre}</th>
-                                            <th>${pareja.usuario.correo}</th>
-                                            <th>${pareja.compatibilidad * 100}</th>
+                                        <c:forEach var="pareja"  items="${usuarios}">
+                                            <tbody class="boxy">                                                   
+                                            <th class="white">${pareja.usuario.nickname}</th>
+                                                <th class="white">${pareja.usuario.nombre}</th>
+                                                <th class="white">${pareja.usuario.correo}</th>
+                                                <th class="white">${pareja.compatibilidad * 100}</th>
+                                                <th style="overflow-y: scroll; height: 40px!important">
                                                 <c:forEach var="gusto" items="${pareja.usuario.gustos}">
-                                                <th>${gusto.nombre_gusto}</th>
+                                                    <li class="white">${gusto.nombre_gusto}</li>
                                                 </c:forEach>
-                                                <th><form action="/Dahood/principal/agregarAmigo" method="POST">                                                        
-                                                        <input id="id_usuario" name="id_usuario" hidden="true" value="${pareja.usuario.idUsuario}"><br>
-                                                        <!--<input id="nombre" name="nombre"   placeholder="${pareja.usuario.idUsuario}"><br>-->
-                                                        <button type="submit" class="btn btn-primary btn-lg active">Agregar</button>
-                                                        </form></th>
+                                                </th>
+                                                    <th><form action="/Dahood/principal/agregarAmigo" method="POST">                                                        
+                                                            <input id="id_usuario" name="id_usuario" hidden="true" value="${pareja.usuario.idUsuario}"><br>
+                                                            <!--<input id="nombre" name="nombre"   placeholder="${pareja.usuario.idUsuario}"><br>-->
+                                                            <!--<button type="submit" class="btn btn-primary btn-lg active">Agregar</button>-->
+                                                            <input name="submit" type="submit" id="boton" value="Agregar" class="boton"/>
+                                                            </form></th>
                                             </tbody>
                                             
                                         </c:forEach>
@@ -91,12 +95,9 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class ="col-8">
-                    
-                </div>
+              
             </div>
         </div>    
     </div>
 </body>
-</html>
+</html> 

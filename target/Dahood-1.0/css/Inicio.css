@@ -10,7 +10,9 @@ and open the template in the editor.
 .container2{
     max-width: 100%;
 }
-
+.white{
+    color: white
+}
 .body2{
     margin: 0;
     padding: 0;
@@ -28,7 +30,7 @@ and open the template in the editor.
     left: 50%;
     transform: translate(-50%,-50%);
     width: 350px;
-    height: 500px;
+    height: 420px;
     padding: 80px 40px;
     box-sizing: border-box;
     background: rgba(0,0,0,.5);
@@ -101,7 +103,44 @@ and open the template in the editor.
     background: rgba(0,0,0,.5);
     
 }
+.fondo{
+    background: #d1e7b1;
+}
 
+
+
+.boxy{
+    position: relative;
+}
+
+.buscar{
+    position: absolute;
+    top: 55%;
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 1020px;
+    height: 760px;
+    padding: 25px 40px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,.5);
+    
+}
+
+.buscar p{
+    font-weight: bold;
+    color: #fff;
+    
+}
+.cajita{
+    
+    display: flex;
+    
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    
+}
 
 .scroll{
     overflow: auto;
@@ -138,6 +177,24 @@ and open the template in the editor.
     margin-bottom: 20px;
     
 }
+
+.buscar input[type="submit"]{
+    border:none;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+    background: #f86b7d;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.buscar h1{
+    margin: 0;
+    padding: 3% 0 20px;
+    text-align: center;
+    color: #fff;
+}
+
 .register td{
     color: #fff;
 }
@@ -214,9 +271,7 @@ and open the template in the editor.
     background-color: #686E71
 }
 
-.fondo{
-    background: #d1e7b1;
-}
+
 
 
 
@@ -263,11 +318,6 @@ and open the template in the editor.
         height: auto;
         padding: 15px;
       }
-      .row.content {height: auto;} 
+      .x.content {height: auto;} 
     }
-    
-    .bottom_wrapper .send_message{
-        background: #d1e7b1;
-    }
-
 
